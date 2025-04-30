@@ -7,3 +7,4 @@ Projeto realizado no segundo período de TSI pela tutoria da professora Liliane
  * [Beltrano](https://github.com/lilialnas)
  * [Sicrano](https://github.com/lilialnas)
  * [Victor](https://github.com/VSoares27)
+ * [Aecio](https://github.com/Aecio09)
