@@ -19,10 +19,10 @@ A aplicação tem como principal público os professores e os servidores da Coor
 
 ## Tecnologias
 
-* [HTML5]
-* [CSS]
-* [PHP]
-* [JavaScript]
+* HTML5
+* CSS
+* PHP
+* JavaScript
 
 ## Desenvolvedores
 
