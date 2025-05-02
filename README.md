@@ -28,7 +28,7 @@ A aplicação tem como principal público os professores e os servidores da Coor
 
  * [Aecio Barbosa](https://github.com/Aecio09)
  * [Arthur Bandeira](https://github.com/ArthurBandeira12)
- * [Diego Nunes](https://github.com/Diego-jpeg-27)
+ * [Diego Nunes](https://github.com/Diegonunes27)
  * [Rafaela Neves](https://github.com/rafxhs)
  * [Victor Soares](https://github.com/VSoares27)
  * Tutora: [Professora Liliane Alves](https://github.com/lilialnas)
