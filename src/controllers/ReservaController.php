@@ -26,6 +26,22 @@ class ReservaController
         ];
     }
 
+    public function read()
+    {
+        $sql = "SELECT r.*, e.nome FROM reserva r INNER JOIN evento e ON r.evento_id = e.id";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return [
+            'view' => '',
+            'data' => ['reservas' => $reservas]
+        ];
+    }
+
+
     public function create()
     {
         $espacos = $this->db->query("SELECT id, nome, capacidade, tipo_espaco_id FROM espaco")->fetchAll(PDO::FETCH_ASSOC);

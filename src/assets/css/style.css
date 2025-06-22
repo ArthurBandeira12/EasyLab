@@ -1,0 +1,31 @@
+@import url('home.css');
+@import url('calendar.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F8F8F8;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.navbar-container {
+    background: linear-gradient(90deg, rgba(242, 242, 242, 1) 0%, rgba(3, 140, 76, 1) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+}
+
+
+footer {
+    margin: 2rem;
+}

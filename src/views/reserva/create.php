@@ -20,7 +20,7 @@
             <select id="espaco_id" name="espaco_id" required>
                 <option>Selecione um espaço</option>
                 <?php foreach ($espacos as $espaco): ?>
-                    <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?> - Capacidade: <?= $espaco['capacidade'] ?></option>
+                    <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?></option>
                 <?php endforeach; ?>
             </select>
     
