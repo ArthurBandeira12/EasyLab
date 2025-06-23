@@ -16,23 +16,23 @@
     
             <label for="fim_reserva">Fim</label>
             <input type="datetime-local" id="fim_reserva" name="fim_reserva" required>
-    
+            <! aqui foi onde fiz a modificaão para o usuario não enviar o formulario sem preencher os campos !> 
             <select id="espaco_id" name="espaco_id" required>
-                <option>Selecione um espaço</option>
+                <option value="">Selecione um espaço</option> //fiz uma pequena modific
                 <?php foreach ($espacos as $espaco): ?>
                     <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?></option>
                 <?php endforeach; ?>
             </select>
     
             <select id="disciplina_id" name="disciplina_id" required>
-                <option>Selecione uma disciplina</option>
+                <option value="">Selecione uma disciplina</option>
                 <?php foreach ($disciplinas as $disciplina): ?>
                     <option value="<?= $disciplina['id'] ?>"><?= $disciplina['nome'] ?></option>
                 <?php endforeach; ?>
             </select>
     
             <select id="evento_id" name="evento_id" required>
-                <option>Selecione um evento</option>
+                <option value="">Selecione um evento</option>
                 <?php foreach ($eventos as $evento): ?>
                     <option value="<?= $evento['id'] ?>"><?= $evento['nome'] ?></option>
                 <?php endforeach; ?>
@@ -47,3 +47,17 @@
         </form>
     </div>
 </div>
+<! essa area fiz pq estava acontencendo um erro onde não dava para fechar o modal na area disponibilidade !>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var closeBtn = document.querySelector('.btn-close-modal');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            var modal = document.getElementById('modal');
+            if (modal) modal.style.display = 'none';
+            var modalReserva = document.getElementById('modalReserva');
+            if (modalReserva) modalReserva.style.display = 'none';
+        }
+    }
+});
+</script>

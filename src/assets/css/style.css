@@ -23,6 +23,8 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 2rem;
+    box-shadow: 4px 2px 10px 0px rgba(145, 145, 145, 0.4);
+    color: #038C4C;
 }
 
 

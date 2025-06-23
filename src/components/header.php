@@ -14,7 +14,7 @@
             <!--<ul>
                 <li><a href="#">Calendário de Reserva</a></li>
                 <li><a href="#">Histórico de Reservas</a></li>
-                <li><a href="#">Disponibilidade dos Espaços</a></li>
+                <li><a href="index.php?action=disponibilidade">Disponibilidade dos Espaços</a></li>
                 <li><a href="#">Configurações</a></li>
                 <li><a href="#">Sair</a></li>
             </ul>-->

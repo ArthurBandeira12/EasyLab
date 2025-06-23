@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         fetch('index.php?action=read-reserva')
             .then(res => res.json())
             .then(json => {
-
                 console.log(json)
                 const eventos = json.reservas.map(function (reserva) {
                     const inicio = reserva.inicio_reserva.substring(11, 16);
@@ -61,10 +60,29 @@ document.addEventListener('DOMContentLoaded', async function () {
                         "title": `${reserva.nome} ${inicio} ~ ${fim}`,
                         "start": reserva.inicio_reserva,
                         "end": reserva.fim_reserva
-                    }
+                    } 
                 });
 
                 calendar.addEventSource(eventos);
+
+                // para mostraar as resrvas do dia atual
+                const hoje = new Date().toISOString().slice(0, 10);
+                const reservasHoje = json.reservas.filter(r => r.inicio_reserva.startsWith(hoje));
+                const reservaContainer = document.querySelector('#lista-reservas');
+                if (reservaContainer) {
+                    if (reservasHoje.length === 0) {
+                        reservaContainer.innerHTML = `<p>Nenhuma reserva para hoje.</p>`;
+                    } else {
+                        let html = `<ul>`;
+                        reservasHoje.forEach(r => {
+                            const inicio = r.inicio_reserva.substring(11, 16);
+                            const fim = r.fim_reserva.substring(11, 16);
+                            html += `<li><b>${r.nome}</b>: ${inicio} - ${fim}</li>`;
+                        });
+                        html += `</ul>`;
+                        reservaContainer.innerHTML = html;
+                    }
+                }
             });
     } catch (error) {
         console.log('Erro ao carregar eventos:', error);
