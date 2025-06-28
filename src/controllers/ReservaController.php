@@ -204,5 +204,69 @@ class ReservaController
             ]
         ];
     }
+
+   public function update()
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        echo json_encode(['success' => false, 'message' => 'Método inválido']);
+        exit;
+    }
+
+    $id = $_POST['id'] ?? null;
+    $inicio_reserva = $_POST['inicio_reserva'] ?? null;
+    $fim_reserva = $_POST['fim_reserva'] ?? null;
+    $espaco_id = $_POST['espaco_id'] ?? null;
+    $evento_id = $_POST['evento_id'] ?? null;
+    $observacao = $_POST['observacao'] ?? null;
+
+    if (!$id || !$inicio_reserva || !$fim_reserva || !$espaco_id || !$evento_id) {
+        echo json_encode(['success' => false, 'message' => 'Campos obrigatórios faltando']);
+        exit;
+    }
+
+    // Verificar conflito de horário, ignorando o próprio ID
+    $sql = "SELECT * FROM reserva 
+            WHERE espaco_id = :espaco_id
+              AND id != :id
+              AND inicio_reserva < :fim_reserva
+              AND fim_reserva > :inicio_reserva";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([
+        'espaco_id' => $espaco_id,
+        'id' => $id,
+        'inicio_reserva' => $inicio_reserva,
+        'fim_reserva' => $fim_reserva,
+    ]);
+
+    if ($stmt->fetch()) {
+        echo json_encode(['success' => false, 'message' => 'Conflito de horário com outra reserva']);
+        exit;
+    }
+
+    // Atualizar a reserva
+    $sqlUpdate = "UPDATE reserva SET
+        inicio_reserva = :inicio_reserva,
+        fim_reserva = :fim_reserva,
+        espaco_id = :espaco_id,
+        evento_id = :evento_id,
+        observacao = :observacao
+        WHERE id = :id";
+
+    $stmtUpdate = $this->db->prepare($sqlUpdate);
+
+    $success = $stmtUpdate->execute([
+        'inicio_reserva' => $inicio_reserva,
+        'fim_reserva' => $fim_reserva,
+        'espaco_id' => $espaco_id,
+        'evento_id' => $evento_id,
+        'observacao' => $observacao,
+        'id' => $id
+    ]);
+
+    echo json_encode(['success' => $success]);
+    exit;
+}
+
 }
 ?>

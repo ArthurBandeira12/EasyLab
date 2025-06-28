@@ -10,8 +10,9 @@ $result = match ($action) {
     'create-reserva'      => $reservaController->create(),
     'list-reserva'        => $reservaController->index(),
     'read-reserva'        => $reservaController->read(),
-    // adicionei isso apenas para fazer a arota para disponibilidade
+    // adicionei isso apenas para fazer a rota para disponibilidade
     'disponibilidade'     => $reservaController->disponibilidade(),
+    'update-reserva'      => $reservaController->update(),
     default               => ['view' => './src/views/home.php', 'data' => []]
 };
 
