@@ -1,0 +1,164 @@
+/* RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'Inter', sans-serif;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* CABEÇALHO */
+.header {
+  background: linear-gradient(90deg, rgba(242,242,242,1) 0%, rgba(3,140,76,1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  box-shadow: 4px 2px 10px rgba(145,145,145,0.4);
+}
+
+.logo {
+  color: #038C4C;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* CONTAINER PRINCIPAL */
+.modificar-outer-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modificar-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.modificar-header {
+  margin-bottom: 2rem;
+}
+
+.modificar-header h2 {
+  color: #038C4C;
+  font-size: 1.5rem;
+}
+
+/* FORMULÁRIO */
+.modificar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1rem 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  padding: 0.6em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-salvar {
+  padding: 0.7em 1.5em;
+  background: #16a085;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-salvar:hover {
+  background: #138d75;
+}
+
+.btn-cancelar {
+  background: none;
+  border: none;
+  color: #038C4C;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* TOOLTIP */
+.fc-tooltip {
+  position: absolute;
+  z-index: 10000;
+  background: #fff;
+  border-top: 4px solid #27ae60;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  max-width: 220px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+/* MODAL (apenas se for usar em outras telas) */
+.modal-reserva {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4rem;
+  z-index: 9999;
+}
+
+.modal-reserva-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  width: 80vw;
+  max-width: 900px;
+  overflow: hidden;
+}

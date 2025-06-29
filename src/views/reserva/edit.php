@@ -1,49 +1,84 @@
-<div id="editModal" class="modal" style="display:block;">
-    <div class="modal-content">
-        <header class="modal-header">
-            <h3 class="modal-title">Reserva</h3>
-            <button class="btn-close-modal">
-                <i class="fa-solid fa-x"></i>
-            </button>
-        </header>
-        <hr>
-        <form action="index.php?action=update-reserva" method="POST">
-            <label for="data">Data</label>
-            <input type="date" id="data" name="data" required>
-    
-            <label for="inicio_reserva">Início</label>
-            <input type="datetime-local" id="inicio_reserva" name="inicio_reserva" required>
-    
-            <label for="fim_reserva">Fim</label>
-            <input type="datetime-local" id="fim_reserva" name="fim_reserva" required>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificação de Reserva</title>
+    <link rel="stylesheet" href="/src/assets/css/edit.css"> <!-- CSS de edição -->
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">EasyLab</h1>
+    </header>
 
-            <select id="espaco_id" name="espaco_id" required>
-                <option value="">Selecione um espaço</option> 
-                <?php foreach ($espacos as $espaco): ?>
-                    <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-    
-            <select id="disciplina_id" name="disciplina_id" required>
-                <option value="">Selecione uma disciplina</option>
-                <?php foreach ($disciplinas as $disciplina): ?>
-                    <option value="<?= $disciplina['id'] ?>"><?= $disciplina['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-    
-            <select id="evento_id" name="evento_id" required>
-                <option value="">Selecione um evento</option>
-                <?php foreach ($eventos as $evento): ?>
-                    <option value="<?= $evento['id'] ?>"><?= $evento['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-    
-            <label for="observacao">Observação</label>
-            <input type="text" id="observacao" name="observacao" required>
-            
-            <div class="btn-submit">
-                <button type="submit">Salvar</button>
+    <main class="modificar-outer-container">
+        <section class="modificar-container">
+            <div class="modificar-header">
+                <h2>Modificação de Reserva</h2>
             </div>
-        </form>
-    </div>
-</div>
+
+            <form class="modificar-form" action="index.php?action=update-reserva" method="POST">
+                <input type="hidden" name="id" value="<?= htmlspecialchars($reserva->id ?? '') ?>"> <!-- ID da reserva -->
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" value="<?= htmlspecialchars($reserva->data ?? '') ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inicio_reserva">Início:</label>
+                        <input type="datetime-local" id="inicio_reserva" name="inicio_reserva" value="<?= htmlspecialchars($reserva->inicio_reserva ?? '') ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fim_reserva">Fim:</label>
+                        <input type="datetime-local" id="fim_reserva" name="fim_reserva" value="<?= htmlspecialchars($reserva->fim_reserva ?? '') ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="espaco_id">Espaço:</label>
+                        <select id="espaco_id" name="espaco_id" required>
+                            <option value="">Selecione um espaço</option>
+                            <?php foreach ($espacos as $espaco): ?>
+                                <option value="<?= $espaco['id'] ?>" <?= ($reserva->espaco_id ?? '') == $espaco['id'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($espaco['nome']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="disciplina_id">Disciplina:</label>
+                        <select id="disciplina_id" name="disciplina_id" required>
+                            <option value="">Selecione uma disciplina</option>
+                            <?php foreach ($disciplinas as $disciplina): ?>
+                                <option value="<?= $disciplina['id'] ?>" <?= ($reserva->disciplina_id ?? '') == $disciplina['id'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($disciplina['nome']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="evento_id">Evento:</label>
+                        <select id="evento_id" name="evento_id" required>
+                            <option value="">Selecione um evento</option>
+                            <?php foreach ($eventos as $evento): ?>
+                                <option value="<?= $evento['id'] ?>" <?= ($reserva->evento_id ?? '') == $evento['id'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($evento['nome']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="observacao">Observação:</label>
+                        <textarea id="observacao" name="observacao" rows="3"><?= htmlspecialchars($reserva->observacao ?? '') ?></textarea>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                    <a href="index.php" class="btn-cancelar">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
