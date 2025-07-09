@@ -285,4 +285,14 @@ class ReservaController
             'data' => ['reserva' => $reserva, 'espacos' => $espacos, 'disciplinas' => $disciplinas, 'eventos' => $eventos]
         ];
     }
+
+    
+    public function delete(int $id)
+    {
+        $stmt = $this->db->prepare('DELETE FROM reserva WHERE id = :id');
+        $stmt->execute(['id'=> $id]);
+        
+        header('Location: index.php');
+        exit;
+    }
 }
