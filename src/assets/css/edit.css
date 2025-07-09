@@ -98,9 +98,11 @@ textarea {
   grid-column: 1 / -1;
 }
 
-.form-buttons {
+
+.form-buttons, .btn-canreserva  { 
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 10px;
   margin-top: 1rem;
 }
 
@@ -124,6 +126,16 @@ textarea {
   color: #038C4C;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.btn-canreserva{  
+  margin-left: 685px;
+  padding: 0.7em 1.5em;
+  background: red;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 /* TOOLTIP */
