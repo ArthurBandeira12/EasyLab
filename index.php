@@ -3,17 +3,17 @@ require_once './src/controllers/ReservaController.php';
 
 $reservaController = new ReservaController();
 
-$action = $_GET['action'] ?? '';
-$id     = $_GET['id'] ?? 0;
+$action = $_GET['action'] ?? $_POST['action'] ?? '';
+$isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
 
-// Roteamento de ações
 $result = match ($action) {
     'create-reserva'    => $reservaController->create(),
     'list-reserva'      => $reservaController->index(),
     'read-reserva'      => $reservaController->read(),
     'disponibilidade'   => $reservaController->disponibilidade(),
     'update-reserva'    => $reservaController->update(),
-    'edit-reserva'      => $reservaController->edit((int)$id), // Novo: rota para edição em nova aba
+    'edit-reserva'      => $reservaController->edit((int)($_GET['id'] ?? 0)),
+    'delete-reserva'    => $isPost ? $reservaController->delete((int)($_POST['id'] ?? 0)) : null,
     default             => ['view' => './src/views/home.php', 'data' => []]
 };
 
