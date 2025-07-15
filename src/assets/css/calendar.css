@@ -1,0 +1,15 @@
+.fc .fc-toolbar button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #3D875A;
+}
+
+.fc .fc-toolbar button:hover {
+    background: none;
+    color: #3D875A;
+}
+
+.fc .fc-toolbar button:focus {
+    outline: none;
+}

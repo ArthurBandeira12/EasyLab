@@ -1,0 +1,80 @@
+body {
+    background: #f5f6fa;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/*.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+    */
+
+.disponibilidade-outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 40vh;        
+    padding-bottom: 2rem;   
+    padding-right: 5rem;
+}
+
+.disponibilidade-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2.5rem 2rem;
+    min-width: 900px;
+    max-width: 2500px;
+    width: 100%;
+    margin-left: 125px;
+}
+
+.disponibilidade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem; 
+}
+
+.disponibilidade-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+    width: auto;
+}
+
+.disponibilidade-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.disponibilidade-table th, .disponibilidade-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.disponibilidade-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+
+.btn-filtrar, .btn-adicionar {
+    background: #16a085;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.5em;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-filtrar {
+    background: #138d75;
+}
