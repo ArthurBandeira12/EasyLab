@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/src/assets/css/style.css">
     <link rel="stylesheet" href="/src/assets/css/disponibilidade.css">
+<<<<<<< HEAD
 
 
     <title>EasyLab</title>
     
+=======
+    <title>EasyLab</title>
+>>>>>>> c0afd7e809541e35bf8140b2476cb9235c17334a
 </head>
