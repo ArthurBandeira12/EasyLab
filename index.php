@@ -14,6 +14,7 @@ $result = match ($action) {
     'update-reserva'    => $reservaController->update(),
     'edit-reserva'      => $reservaController->edit((int)($_GET['id'] ?? 0)),
     'delete-reserva'    => $isPost ? $reservaController->delete((int)($_POST['id'] ?? 0)) : null,
+    'registrar-usuario' => ['view' => './src/views/usuario/registrar.php', 'data' => []],
     default             => ['view' => './src/views/home.php', 'data' => []]
 };
 
