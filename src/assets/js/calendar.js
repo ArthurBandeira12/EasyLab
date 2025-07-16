@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 document.querySelector('.btn-close-modal').addEventListener('click', closeModal);
             });
     };
-    // Inicializa o FullCalendar UMA ÚNICA VEZ
     const calendar = new FullCalendar.Calendar(calendarEl, {
         headerToolbar: {
             left:   'prev,next today',
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         selectMirror: true,
         editable:     true,
 
-        // Atualizado: abre edição em nova aba ao clicar no evento
         eventClick: function(info) {
             window.open(
                 'index.php?action=edit-reserva&id=' + encodeURIComponent(info.event.id),

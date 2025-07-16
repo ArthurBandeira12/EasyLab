@@ -45,7 +45,7 @@ class ReservaController
         $disciplinas = $this->db->query("SELECT id, nome FROM disciplina")->fetchAll(PDO::FETCH_ASSOC);
         $eventos = $this->db->query("SELECT id, nome FROM evento")->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { // previne envio com campos vazios
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
             if (
                 empty($_POST['data']) ||
                 empty($_POST['inicio_reserva']) ||
@@ -80,7 +80,7 @@ class ReservaController
                 exit;
             }
 
-            $this->reserva->usuario_id      = 1;
+            $this->reserva->usuario_id      = $_SESSION['usuario_id'];
             $this->reserva->data            = $_POST['data'];
             $this->reserva->inicio_reserva  = $inicio_reserva;
             $this->reserva->fim_reserva     = $fim_reserva;
@@ -90,7 +90,7 @@ class ReservaController
             $this->reserva->evento_id       = $_POST['evento_id'];
 
             if ($this->reserva->create()) {
-                header("Location: home.php");
+                header("Location: home");
             }
         }
 

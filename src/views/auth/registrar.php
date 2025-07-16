@@ -15,7 +15,7 @@
 
   <form action="index.php?action=create-usuario" method="POST">
     <label for="nome">Nome completo</label>
-    <input type="text" id="nome" name="nome" placeholder="exemplo@discente.ifpe.edu.br" required>
+    <input type="text" id="nome" name="nome" placeholder="Insira seu nome completo" required>
 
     <label for="email">Email</label>
     <input type="email" id="email" name="email" placeholder="exemplo@discente.ifpe.edu.br" required>
@@ -24,10 +24,11 @@
     <input type="password" id="senha" name="senha" placeholder="Insira sua senha" required>
 
     <label for="confirmar_senha">Confirmar Senha</label>
-    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Insira sua senha" required>
+    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme sua senha" required>
 
     <button type="submit">Cadastre-se</button>
   </form>
+  <p>Já possui uma conta? <a href="index.php?action=login-form">Entrar</a></p>
 </div>
 
 <?php
