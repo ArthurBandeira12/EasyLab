@@ -19,14 +19,9 @@
                 <! onde coloquei o botão para ir para disponibilidade !>
                 <div id="lista-reservas"></div>
                 <div class="btn-disponibilidade-wrapper">
-<<<<<<< HEAD
                     <a href="index.php?action=registrar-usuario" class="btn-disponibilidade">Registrar Usuário</a>
                     <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
 
-=======
-                    <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
-                    <a href="index.php?action=registrar-usuario">Registrar Usuário</a> <! apenas para teste, depois remover !>
->>>>>>> c0afd7e809541e35bf8140b2476cb9235c17334a
                 </div>
             </section>
         </div>
