@@ -62,6 +62,25 @@ class ReservaController
             $inicio_reserva = $_POST['inicio_reserva'];
             $fim_reserva = $_POST['fim_reserva'];
 
+            // verificação dos parametros da reserva
+            $inicio_horario = date('H:i', strtotime($inicio_reserva));
+            $fim_horario    = date('H:i', strtotime($fim_reserva));
+            $inicio_data = date('Y-m-d', strtotime($inicio_reserva));
+            $fim_data    = date('Y-m-d', strtotime($fim_reserva));
+
+            if ($inicio_horario < '07:00' || $fim_horario > '17:50') {
+                echo "<script>alert('Horário fora do permitido (07:00 - 17:50)'); window.history.back();</script>";
+                exit;
+            }
+            elseif ($inicio_horario >= $fim_horario) {
+                echo "<script>alert('Horário de início deve ser anterior ao horário de fim!'); window.history.back();</script>";
+                exit;
+            }
+            elseif ($inicio_data != $fim_data) {
+                echo "<script>alert('Data de início deve ser igual à data de fim!'); window.history.back();</script>";
+                exit;
+            }
+
             $stmt = $this->db->prepare(
                 "SELECT * FROM reserva 
                  WHERE espaco_id = :espaco_id
