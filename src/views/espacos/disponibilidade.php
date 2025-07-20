@@ -1,7 +1,6 @@
-<?php include_once './src/components/head.php'; ?>
-
 <body>
     <?php include_once './src/components/header.php'; ?>
+    <?php include_once './src/components/head.php'; ?>
 
     <main>
         <div class="container">
@@ -70,22 +69,12 @@
 
     <?php include_once './src/components/footer.php'; ?>
 
-    <!-- Parte feita para acessar o modal -->
-    <!-- Novo: Estrutura do modal customizado com header, body e footer -->
+    <!-- area onde foi resolvido o bug do modal-->
     <div id="modalReserva" class="modal-reserva" style="display:none;">
-        <div class="modal-reserva-content">
-            <div class="modal-header">
-                <h2>Modificação de Reserva</h2>
-            </div>
             <div class="modal-body">
                 <?php include './src/views/reserva/create.php'; ?>
             </div>
-            <div class="modal-footer">
-                <button class="btn-submit">Salvar Alterações</button>
-                <a href="#" class="cancelar" id="fecharModalReserva">Cancelar</a>
-            </div>
-            <span class="close-modal-reserva" id="fecharModalReserva">&times;</span>
-        </div>
+            <span class="close-modal-reserva" id="fecharModalReserva"></span>
     </div>
 </body>
 </html>
