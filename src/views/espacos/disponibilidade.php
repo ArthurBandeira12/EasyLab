@@ -1,6 +1,37 @@
 <body>
-    <?php include_once './src/components/header.php'; ?>
     <?php include_once './src/components/head.php'; ?>
+    <?php include_once './src/components/header.php'; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const abrirModalBtn = document.getElementById('abrirModalReserva');
+    const modal = document.getElementById('modal');
+    const fecharModalBtn = document.querySelector('.btn-close-modal');
+
+    if (modal) {
+    modal.style.display = 'none';
+    }
+
+    if (abrirModalBtn && modal) {
+        abrirModalBtn.addEventListener('click', function () {
+            modal.style.display = 'flex';
+        });
+    }
+
+    if (fecharModalBtn && modal) {
+        fecharModalBtn.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+    }
+
+    // Fecha o modal ao clicar fora dele
+    window.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+</script>
 
     <main>
         <div class="container">
@@ -68,35 +99,9 @@
     </main>
 
     <?php include_once './src/components/footer.php'; ?>
+<!-- isso tem que ficar no final para não acontecer um pequeno bug visiual, pq utilizei uma logica meio burra para conseguir fazer
+ o modal funcionar direito nesta pagina -->
+    <?php include_once './src/views/reserva/create.php'; ?>
 
-    <!-- area onde foi resolvido o bug do modal-->
-    <div id="modalReserva" class="modal-reserva" style="display:none;">
-            <div class="modal-body">
-                <?php include './src/views/reserva/create.php'; ?>
-            </div>
-            <span class="close-modal-reserva" id="fecharModalReserva"></span>
-    </div>
 </body>
 </html>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('abrirModalReserva').onclick = function() {
-        document.getElementById('modalReserva').style.display = 'block';
-    };
-    document.getElementById('fecharModalReserva').onclick = function() {
-        document.getElementById('modalReserva').style.display = 'none';
-    };
-    var closeBtns = document.querySelectorAll('#modalReserva .btn-close-modal');
-    closeBtns.forEach(function(btn) {
-        btn.onclick = function() {
-            document.getElementById('modalReserva').style.display = 'none';
-        }
-    });
-    window.onclick = function(event) {
-        var modal = document.getElementById('modalReserva');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
-</script>
