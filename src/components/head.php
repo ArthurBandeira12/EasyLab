@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/src/assets/css/style.css">
     <link rel="stylesheet" href="/src/assets/css/disponibilidade.css">
 
-
     <title>EasyLab</title>
     
 </head>

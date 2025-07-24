@@ -1,5 +1,6 @@
 @import url('home.css');
 @import url('calendar.css');
+@import url('edit-user.css');
 
 * {
   margin: 0;

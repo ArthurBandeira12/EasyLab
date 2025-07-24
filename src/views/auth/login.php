@@ -1,5 +1,5 @@
 <?php
-    include_once './src/components/head.php';
+  include_once __DIR__ . '/../../components/head.php';
     
 ?>
 

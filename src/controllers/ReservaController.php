@@ -260,10 +260,10 @@ class ReservaController
 
         // Redireciona para a página principal após edição full-page
         if ($success) {
-            header('Location: index.php');  // Redireciona ao salvar em tela cheia
+            header('Location: index.php?action=home');  // Redireciona ao salvar em tela cheia
             exit;
         } else {
-            echo "<script>alert('Erro ao salvar alterações'); window.location.href='index.php';</script>";
+            echo "<script>alert('Erro ao salvar alterações'); window.location.href='index.php?action=home'';</script>";
             exit;
         }
     }
@@ -292,7 +292,7 @@ class ReservaController
         $stmt = $this->db->prepare('DELETE FROM reserva WHERE id = :id');
         $stmt->execute(['id'=> $id]);
         
-        header('Location: index.php');
+        header('Location: index.php?action=home');
         exit;
     }
 }

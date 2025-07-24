@@ -99,4 +99,70 @@ class UsuarioController
         header('Location: index.php?action=welcome');
         exit;
     }
+
+
+public function deletarUsuario()
+{
+    
+
+    if (!isset($_SESSION['usuario_id'])) {
+        header('Location: index.php?action=login-form');
+        exit;
+    }
+
+    $this->usuario->id = $_SESSION['usuario_id'];
+
+    if ($this->usuario->delete()) {
+        session_destroy();
+        header('Location: index.php?action=welcome');
+        exit;
+    } else {
+        return [
+            'view' => './src/views/usuario/index-user.php',
+            'data' => ['mensagem' => 'Erro ao deletar a conta.']
+        ];
+    }
+}
+
+public function indexUser(): array {
+    
+    if (!isset($_SESSION['usuario_id'])) {
+        header('Location: index.php?action=login-form');
+        exit;
+    }
+
+    $mensagem = '';
+
+    $db = new Database();
+    $pdo = $db->getConnection();
+    $usuario = new Usuario($pdo);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $usuario->id = $_SESSION['usuario_id'];
+        $usuario->nome = $_POST['nome'];
+        $usuario->email = $_POST['email'];
+        $usuario->senha = !empty($_POST['senha']) ? password_hash($_POST['senha'], PASSWORD_BCRYPT) : null;
+
+        if ($usuario->update()) {
+            $_SESSION['nome'] = $usuario->nome;
+            $_SESSION['email'] = $usuario->email;
+            $mensagem = "Dados atualizados com sucesso!";
+        } else {
+            $mensagem = "Erro ao atualizar os dados.";
+        }
+    }
+
+    return [
+        'view' => './src/views/usuario/index-user.php',
+        'data' => [
+            'mensagem' => $mensagem,
+            'usuario' => [
+                'nome' => $_SESSION['nome'],
+                'email' => $_SESSION['email']
+            ]
+        ]
+    ];
+}
+
+
 }

@@ -34,6 +34,8 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'login-form' => $usuarioController->indexLogin(),
         'logout' => $usuarioController->logout(),
         'home' => ['view' => './src/views/home.php', 'data' => []],
+        'index-user' => $usuarioController->indexUser(),
+        'deletar-usuario' => $usuarioController->deletarUsuario(),
         default             => ['view' => './src/views/welcome.php', 'data' => []]
     };
 }

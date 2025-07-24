@@ -64,7 +64,7 @@ CREATE TABLE reserva (
   CONSTRAINT fk_reserva_usuario
     FOREIGN KEY (usuario_id)
     REFERENCES usuario (id)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT fk_reserva_disciplina
     FOREIGN KEY (disciplina_id)
@@ -77,3 +77,5 @@ CREATE TABLE reserva (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+

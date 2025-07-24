@@ -84,7 +84,7 @@ include_once './src/components/head.php';
             </div>
             <div class="modal-footer">
                 <button class="btn-submit">Salvar Alterações</button>
-                <a href="#" class="cancelar" id="fecharModalReserva">Cancelar</a>
+                <a href="index.php?action=home" class="cancelar" id="fecharModalReserva">Cancelar</a>
             </div>
             <span class="close-modal-reserva" id="fecharModalReserva">&times;</span>
         </div>

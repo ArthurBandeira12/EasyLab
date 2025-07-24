@@ -16,6 +16,8 @@
             <ul class="profile-info">
                 <?php if (isset($_SESSION['usuario_id'])): ?>
                     <li><a href="index.php?action=logout">Sair</a></li>
+                    <li><a href="index.php?action=index-user">Perfil</a></li>
+
                 <?php else: ?>
                     <li><a href="index.php?action=create-usuario">Criar Conta</a></li>
                     <li><a href="index.php?action=login-form">Entrar</a></li>
