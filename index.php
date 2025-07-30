@@ -3,6 +3,7 @@ session_start();
 
 require_once './src/controllers/ReservaController.php';
 require_once './src/controllers/UsuarioController.php';
+require_once './src/utils/auth.php';
 
 $reservaController = new ReservaController();
 $usuarioController = new UsuarioController();
@@ -20,7 +21,17 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
     exit;
 } else {
 
+    $rotasAdmin = [
+        'create-espaco'
+    ];
+
+    if (in_array($action, $rotasAdmin) && !isAdmin()) {
+        echo "Acesso restrito a administradores.";
+        exit;
+    }
+
     $result = match ($action) {
+        'create-espaco' => ['view' => './src/views/espacos/create.php', 'data' => []], //Por enquanto que não há no controller
         'create-reserva'    => $reservaController->create(),
         'list-reserva'      => $reservaController->index(),
         'read-reserva'      => $reservaController->read(),

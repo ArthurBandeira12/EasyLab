@@ -1,9 +1,16 @@
+<?php
+include_once 'src/utils/auth.php';
+?>
+
 <header>
     <nav class="navbar-container">
         <h1><a href="index.php?action=home">EasyLab</a></h1>
         <div class="navbar-dropdown">
             <div>
                 <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <?php if (isAdmin()): ?>
+                        <li><a href="index.php?action=create-espaco">Espaços</a></li>
+                    <?php endif; ?>
                 <div>
                    <!-- <img src="../assets/images/gata.jpg"> -->
                     <div><span></span></div> <!-- nome do usuário -->

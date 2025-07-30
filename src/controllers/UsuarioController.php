@@ -48,11 +48,16 @@ class UsuarioController
                 $email = $_POST['email'];
                 $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 
+                $papel = 'usuario';
+                if (stripos($email, 'admin') !== false) {
+                    $papel = 'admin';
+                }
+                
                 $db = new Database();
                 $pdo = $db->getConnection();
 
-                $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)");
-                if ($stmt->execute([$nome, $email, $senha])) {
+                $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha, papel) VALUES (?, ?, ?, ?)");
+                if ($stmt->execute([$nome, $email, $senha, $papel])) {
                     header("Location: index.php?action=login-form");
                     exit;
                 } else {
@@ -81,6 +86,7 @@ class UsuarioController
                 $_SESSION['usuario_id'] = $usuario['id'];
                 $_SESSION['email'] = $usuario['email'];
                 $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['papel'] = $usuario['papel'];
                 header('Location: index.php?action=home');
                 exit;
             } else {
