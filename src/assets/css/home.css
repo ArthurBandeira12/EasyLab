@@ -122,6 +122,7 @@
     form input[type="date"],
     form input[type="datetime-local"],
     form input[type="text"],
+    form input[type="time"],
     form select {
         width: 100%;
         padding: 0.6rem;
@@ -164,3 +165,6 @@
     .btn-submit button:active {
         background-color: #1c7e45;
     }
+    select {
+    background: #ffffff;
+}

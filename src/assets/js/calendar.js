@@ -31,7 +31,40 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.body.classList.remove('no-scroll');
     };
 
-    const openModal = () => {
+    function inicializarCampoData() {
+        var dataInput = document.getElementById('data');
+        if (dataInput) {
+            var hoje = new Date();
+            var yyyy = hoje.getFullYear();
+            var mm = String(hoje.getMonth() + 1).padStart(2, '0');
+            var dd = String(hoje.getDate()).padStart(2, '0');
+            dataInput.value = yyyy + '-' + mm + '-' + dd;
+        }
+    }
+
+    function inicializarFormularioReserva() {
+        var dataInput = document.getElementById('data');
+        if (dataInput && !dataInput.value) {
+            var hoje = new Date();
+            var yyyy = hoje.getFullYear();
+            var mm = String(hoje.getMonth() + 1).padStart(2, '0');
+            var dd = String(hoje.getDate()).padStart(2, '0');
+            dataInput.value = yyyy + '-' + mm + '-' + dd;
+        }
+
+        var form = document.querySelector('#modal form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                var data = document.getElementById('data').value;
+                var inicio = document.getElementById('inicio_hora').value;
+                var fim = document.getElementById('fim_hora').value;
+                document.getElementById('inicio_reserva').value = data + 'T' + inicio;
+                document.getElementById('fim_reserva').value = data + 'T' + fim;
+            }, { once: true });
+        }
+    }
+
+    function openModal(dataSelecionada = null) {
         fetch('index.php?action=list-reserva')
             .then(res => res.text())
             .then(html => {
@@ -45,6 +78,12 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const inputId = document.getElementById('reserva-id');
                 if (inputId) inputId.remove();
                 document.querySelector('.btn-close-modal').addEventListener('click', closeModal);
+                
+                if (dataSelecionada) {
+                    const dataInput = document.getElementById('data');
+                    if (dataInput) dataInput.value = dataSelecionada;
+                }
+                inicializarFormularioReserva();
             });
     };
     // Inicializa o FullCalendar UMA ÚNICA VEZ
@@ -69,8 +108,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             );
         },
 
-        dateClick: function () {
-            openModal();
+        dateClick: function (info) {
+            openModal(info.dateStr);
         },
         eventContent: function (info) {
             return { html: `<div class="fc-event-title">${info.event.title}</div>` };
