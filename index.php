@@ -4,9 +4,11 @@ session_start();
 require_once './src/controllers/ReservaController.php';
 require_once './src/controllers/UsuarioController.php';
 require_once './src/utils/auth.php';
+require_once './src/controllers/EspacoController.php';
 
 $reservaController = new ReservaController();
 $usuarioController = new UsuarioController();
+$espacoController = new EspacoController();
 
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -31,7 +33,11 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
     }
 
     $result = match ($action) {
-        'create-espaco' => ['view' => './src/views/espacos/create.php', 'data' => []], //Por enquanto que não há no controller
+        'create-espaco' => $espacoController->create(),
+        'espaco' => $espacoController->index(),
+        'read-espaco'         => $espacoController->read((int)($_GET['id'] ?? 0)),
+        'edit-espaco'         => $espacoController->edit((int)($_GET['id'] ?? 0)),
+        'edit-espaco' => $espacoController->update(), 
         'create-reserva'    => $reservaController->create(),
         'list-reserva'      => $reservaController->index(),
         'read-reserva'      => $reservaController->read(),
@@ -47,6 +53,7 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'home' => ['view' => './src/views/home.php', 'data' => []],
         'index-user' => $usuarioController->indexUser(),
         'deletar-usuario' => $usuarioController->deletarUsuario(),
+        'delete-espaco' => $espacoController->delete(), 
         default             => ['view' => './src/views/welcome.php', 'data' => []]
     };
 }

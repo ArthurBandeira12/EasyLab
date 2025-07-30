@@ -200,7 +200,7 @@ class ReservaController
         }
 
         return [
-            'view' => './src/views/espacos/disponibilidade.php',
+            'view' => './src/views/espaco/disponibilidade.php',
             'data' => ['reservas' => $resultados, 'data_filtro' => $data_filtro, 'espacos' => $espacos, 'disciplinas' => $disciplinas, 'eventos' => $eventos]
         ];
     }
