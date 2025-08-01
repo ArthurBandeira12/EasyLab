@@ -45,7 +45,7 @@ class ReservaController
         $disciplinas = $this->db->query("SELECT id, nome FROM disciplina")->fetchAll(PDO::FETCH_ASSOC);
         $eventos = $this->db->query("SELECT id, nome FROM evento")->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { // previne envio com campos vazios
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
             if (
                 empty($_POST['data']) ||
                 empty($_POST['inicio_reserva']) ||
@@ -99,7 +99,7 @@ class ReservaController
                 exit;
             }
 
-            $this->reserva->usuario_id      = 1;
+            $this->reserva->usuario_id      = $_SESSION['usuario_id'];
             $this->reserva->data            = $_POST['data'];
             $this->reserva->inicio_reserva  = $inicio_reserva;
             $this->reserva->fim_reserva     = $fim_reserva;
@@ -109,7 +109,7 @@ class ReservaController
             $this->reserva->evento_id       = $_POST['evento_id'];
 
             if ($this->reserva->create()) {
-                header("Location: home.php");
+                header("Location: home");
             }
         }
 
@@ -219,7 +219,7 @@ class ReservaController
         }
 
         return [
-            'view' => './src/views/espacos/disponibilidade.php',
+            'view' => './src/views/espaco/disponibilidade.php',
             'data' => ['reservas' => $resultados, 'data_filtro' => $data_filtro, 'espacos' => $espacos, 'disciplinas' => $disciplinas, 'eventos' => $eventos]
         ];
     }
@@ -279,10 +279,10 @@ class ReservaController
 
         // Redireciona para a página principal após edição full-page
         if ($success) {
-            header('Location: index.php');  // Redireciona ao salvar em tela cheia
+            header('Location: index.php?action=home');  // Redireciona ao salvar em tela cheia
             exit;
         } else {
-            echo "<script>alert('Erro ao salvar alterações'); window.location.href='index.php';</script>";
+            echo "<script>alert('Erro ao salvar alterações'); window.location.href='index.php?action=home'';</script>";
             exit;
         }
     }
@@ -311,7 +311,7 @@ class ReservaController
         $stmt = $this->db->prepare('DELETE FROM reserva WHERE id = :id');
         $stmt->execute(['id'=> $id]);
         
-        header('Location: index.php');
+        header('Location: index.php?action=home');
         exit;
     }
 }

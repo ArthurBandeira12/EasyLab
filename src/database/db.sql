@@ -22,7 +22,8 @@ CREATE TABLE usuario (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  senha VARCHAR(100) NOT NULL
+  senha VARCHAR(100) NOT NULL,
+  papel ENUM('admin', 'usuario') NOT NULL DEFAULT 'usuario'
 );
 
 CREATE TABLE curso (
@@ -64,7 +65,7 @@ CREATE TABLE reserva (
   CONSTRAINT fk_reserva_usuario
     FOREIGN KEY (usuario_id)
     REFERENCES usuario (id)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT fk_reserva_disciplina
     FOREIGN KEY (disciplina_id)
@@ -77,3 +78,5 @@ CREATE TABLE reserva (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+

@@ -75,7 +75,7 @@
                 
                 <div class="form-buttons">
                     <button type="submit" class="btn-salvar">Salvar Alterações</button>
-                    <a href="index.php" class="btn-cancelar">Cancelar</a>
+                    <a href="index.php?action=home" class="btn-cancelar">Cancelar</a>
                 </div>
             </form>
             

@@ -1,5 +1,8 @@
+<?php
+include_once './src/components/head.php';
+?>
+
 <body>
-    <?php include_once './src/components/head.php'; ?>
     <?php include_once './src/components/header.php'; ?>
 
 <script>
@@ -102,6 +105,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- isso tem que ficar no final para não acontecer um pequeno bug visiual, pq utilizei uma logica meio burra para conseguir fazer
  o modal funcionar direito nesta pagina -->
     <?php include_once './src/views/reserva/create.php'; ?>
-
 </body>
 </html>

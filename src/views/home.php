@@ -1,5 +1,5 @@
 <?php
-    include_once './src/components/head.php';
+include_once './src/components/head.php';
 ?>
 
 <body class="no-scroll">
@@ -16,12 +16,9 @@
 
             <section class="reserva-container">
                 <h2>Reservas do Dia</h2>
-                <! onde coloquei o botão para ir para disponibilidade !>
                 <div id="lista-reservas"></div>
                 <div class="btn-disponibilidade-wrapper">
-                    <a href="index.php?action=registrar-usuario" class="btn-disponibilidade">Registrar Usuário</a>
                     <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
-
                 </div>
             </section>
         </div>
@@ -32,11 +29,9 @@
     <script src="./src/fullcalendar-6.1.17/dist/index.global.min.js"></script>
     <script src="./src/assets/js/calendar.js"></script>
     <div id="modal-editar" style="display:none;">
-    <?php include './src/views/reserva/edit.php'; ?>
-</div>
+        <?php include './src/views/reserva/edit.php'; ?>
+    </div>
 
-
-    
 </body>
 
 </html>

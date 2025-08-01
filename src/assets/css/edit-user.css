@@ -1,0 +1,29 @@
+.user-edit {
+    display: flex;
+    flex-direction: column; /* Para empilhar os formulários um embaixo do outro */
+    align-items: center;
+    justify-content: center;
+ 
+    
+}
+
+.user-edit form {
+    
+    
+    
+    
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.btn-user-edit button {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
