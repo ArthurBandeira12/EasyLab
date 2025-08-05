@@ -5,10 +5,14 @@ require_once './src/controllers/ReservaController.php';
 require_once './src/controllers/UsuarioController.php';
 require_once './src/utils/auth.php';
 require_once './src/controllers/EspacoController.php';
+require_once './src/controllers/DisciplinaController.php';
+require_once './src/controllers/CursoController.php';
 
 $reservaController = new ReservaController();
 $usuarioController = new UsuarioController();
 $espacoController = new EspacoController();
+$disciplinaController = new DisciplinaController();
+$cursoController = new CursoController();
 
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -54,6 +58,19 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'index-user' => $usuarioController->indexUser(),
         'deletar-usuario' => $usuarioController->deletarUsuario(),
         'delete-espaco' => $espacoController->delete(), 
+        'disciplina' => $disciplinaController->index(),
+        'create-disciplina' => $disciplinaController->create(),
+        'read-disciplina' => $disciplinaController->read((int)($_GET['id'] ?? 0)),
+        'edit-disciplina-form' => $disciplinaController->edit((int)($_GET['id'] ?? 0)),
+        'edit-disciplina' => $disciplinaController->update(),
+        'delete-disciplina' => $disciplinaController->delete(),
+        'curso' => $cursoController->index(),
+        'create-curso' => $cursoController->create(),
+        'read-curso' => $cursoController->read((int)($_GET['id'] ?? 0)),
+        'edit-curso-form' => $cursoController->edit((int)($_GET['id'] ?? 0)),
+        'edit-curso' => $cursoController->update(),
+        'delete-curso' => $cursoController->delete(),
+
         default             => ['view' => './src/views/welcome.php', 'data' => []]
     };
 }
