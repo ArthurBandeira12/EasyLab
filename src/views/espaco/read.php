@@ -2,7 +2,7 @@
 <body>
   <?php include_once './src/components/header.php'; ?>
 
-  <div class="container">
+  <div class="detalhes-espaco-container">
     <h1>Detalhes do Espaço</h1>
 
     <?php if ($espaco): ?>

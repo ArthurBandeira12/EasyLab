@@ -28,7 +28,7 @@
               <a href="index.php?action=edit-disciplina-form&id=<?= $disciplina['id'] ?>">Editar</a>
               <form action="index.php?action=delete-disciplina" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir esta disciplina?')">
                 <input type="hidden" name="id" value="<?= $disciplina['id'] ?>">
-                <button type="submit" style="background:none; border:none; color:#007BFF; cursor:pointer; padding:0; font:inherit;">Excluir</button>
+                <button type="submit" style="background:none; border:none; color:#b91c1c; cursor:pointer; padding:0; font:inherit;">Excluir</button>
               </form>
             </td>
           </tr>

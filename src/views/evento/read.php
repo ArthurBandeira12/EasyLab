@@ -2,7 +2,7 @@
 <body>
 <?php include_once './src/components/header.php'; ?>
 
-<div class="container">
+<div class="detalhes-tipoespaco-container">
     <h1>Detalhes do Evento</h1>
     <p><strong>ID:</strong> <?= $evento['id'] ?></p>
     <p><strong>Nome:</strong> <?= htmlspecialchars($evento['nome']) ?></p>

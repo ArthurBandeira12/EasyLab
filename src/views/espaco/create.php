@@ -5,7 +5,7 @@ include_once './src/components/head.php';
 <body>
   <?php include_once './src/components/header.php'; ?>
 
-  <div class="form-container">
+  <div class="criar-espaco-form-container">
     <h1>Criar Espaço</h1>
 
     <form action="index.php?action=create-espaco" method="POST">

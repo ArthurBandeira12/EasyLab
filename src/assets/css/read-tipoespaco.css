@@ -1,0 +1,48 @@
+/* Estilo exclusivo para a página Detalhes do Tipo de Espaço */
+.detalhes-tipoespaco-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título */
+.detalhes-tipoespaco-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #065f46;
+  font-weight: 700;
+}
+
+/* Parágrafos com dados */
+.detalhes-tipoespaco-container p {
+  font-size: 1rem;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.detalhes-tipoespaco-container p strong {
+  color: #333;
+}
+
+/* Botão/link de voltar */
+.detalhes-tipoespaco-container a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #3ca55c, #2a9d8f);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.detalhes-tipoespaco-container a:hover {
+  background: linear-gradient(90deg, #2a9d8f, #3ca55c);
+}

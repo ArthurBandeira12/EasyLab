@@ -2,8 +2,8 @@
 <body>
 <?php include_once './src/components/header.php'; ?>
 
-<div class="form-container">
-    <h1>Criar Evento</h1>
+<div class="novo-evento-container">
+    <h2>Criar Evento</h2>
     <form action="index.php?action=create-evento" method="POST">
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" required>
@@ -11,4 +11,5 @@
     </form>
     <a href="index.php?action=evento">Voltar</a>
 </div>
+
 </body>

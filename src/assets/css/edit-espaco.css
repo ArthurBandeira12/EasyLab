@@ -1,0 +1,71 @@
+/* Estilo exclusivo para o formulário de edição de espaço */
+.editar-espaco-form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.editar-espaco-form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #006b41;
+  font-weight: bold;
+}
+
+.editar-espaco-form-container label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #333;
+}
+
+.editar-espaco-form-container input,
+.editar-espaco-form-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.editar-espaco-form-container input:focus,
+.editar-espaco-form-container select:focus {
+  outline: none;
+  border-color: #2fa06c;
+  box-shadow: 0 0 4px rgba(47,160,108,0.4);
+}
+
+.editar-espaco-form-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background: #2fa06c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.editar-espaco-form-container button:hover {
+  background: #278b5c;
+}
+
+.editar-espaco-form-container a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #2fa06c;
+}
+
+.editar-espaco-form-container a:hover {
+  text-decoration: underline;
+}

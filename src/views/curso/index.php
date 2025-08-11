@@ -24,7 +24,7 @@
               <a href="index.php?action=edit-curso-form&id=<?= $curso['id'] ?>">Editar</a>
               <form action="index.php?action=delete-curso" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza?')">
                 <input type="hidden" name="id" value="<?= $curso['id'] ?>">
-                <button type="submit" style="background:none; border:none; color:#007BFF; cursor:pointer; padding:0; font:inherit;">Excluir</button>
+                <button type="submit" style="background:none; border:none; color:#b91c1c; cursor:pointer; padding:0; font:inherit;">Excluir</button>
               </form>
             </td>
           </tr>

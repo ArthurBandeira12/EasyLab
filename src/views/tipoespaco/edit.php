@@ -2,7 +2,7 @@
 <body>
 <?php include_once './src/components/header.php'; ?>
 
-
+<div class="editar-tipoespaco-container">
 <h2>Editar Tipo de Espaço</h2>
 <form action="index.php?action=update-tipoespaco" method="POST">
 
@@ -13,3 +13,4 @@
     <button type="submit">Atualizar</button>
     <a href="index.php?action=tipoespaco">Cancelar</a>
 </form>
+</div>

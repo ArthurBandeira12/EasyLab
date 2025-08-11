@@ -1,0 +1,81 @@
+/* Container geral para o formulário */
+.novo-evento-container {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título */
+.novo-evento-container h2 {
+  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #065f46;
+  text-align: center;
+}
+
+/* Label */
+.novo-evento-container label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Campo de texto */
+.novo-evento-container input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.novo-evento-container input[type="text"]:focus {
+  outline: none;
+  border-color: #2a9d8f;
+  box-shadow: 0 0 4px rgba(42,157,143,0.4);
+}
+
+/* Botão principal */
+.novo-evento-container button {
+  width: 200px;
+  padding: 10px 0;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #3ca55c, #2a9d8f);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.novo-evento-container button:hover {
+  background: linear-gradient(90deg, #2a9d8f, #3ca55c);
+}
+
+/* Link cancelar */
+.novo-evento-container a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #2a9d8f;
+  font-weight: 600;
+}
+
+.novo-evento-container a:hover {
+  text-decoration: underline;
+}

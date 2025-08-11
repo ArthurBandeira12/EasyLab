@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="/src/assets/css/style.css">
     <link rel="stylesheet" href="/src/assets/css/disponibilidade.css">
     <link rel="stylesheet" href="/src/assets/css/edit.css">
+    <link rel="stylesheet" href="/src/assets/css/index-espaco.css">
+    <link rel="stylesheet" href="/src/assets/css/create-espaco.css">
+    <link rel="stylesheet" href="/src/assets/css/read-espaco.css">
+    <link rel="stylesheet" href="/src/assets/css/edit-espaco.css">
+    <link rel="stylesheet" href="/src/assets/css/index-tipoespaco.css">
+    <link rel="stylesheet" href="/src/assets/css/edit-tipoespaco.css">
+    <link rel="stylesheet" href="/src/assets/css/create-tipoespaco.css">
+    <link rel="stylesheet" href="/src/assets/css/read-tipoespaco.css">
+    <link rel="stylesheet" href="/src/assets/css/index-evento.css">
+    <link rel="stylesheet" href="/src/assets/css/create-evento.css">
 
     <title>EasyLab</title>
     

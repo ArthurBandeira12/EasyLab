@@ -95,13 +95,28 @@ class EspacoController
 
 
     public function edit(int $id)
-    {
-        $stmt = $this->db->prepare('SELECT * FROM espaco WHERE id = :id');
-        $stmt->execute(['id' => $id]);
-        $espaco = $stmt->fetch(PDO::FETCH_ASSOC);
+{
+    $stmt = $this->db->prepare('SELECT * FROM espaco WHERE id = :id');
+    $stmt->execute(['id' => $id]);
+    $espaco = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return ['view' => './src/views/espaco/edit.php', 'data' => ['espaco' => $espaco]];
+    if (!$espaco) {
+        // Caso não encontre, redireciona para lista
+        header('Location: index.php?action=espaco');
+        exit;
     }
+
+    // Buscar tipos de espaço
+    $tipos = $this->getTipos();
+
+    return [
+        'view' => './src/views/espaco/edit.php',
+        'data' => [
+            'espaco' => $espaco,
+            'tipos'  => $tipos
+        ]
+    ];
+}
 
     public function update()
     {

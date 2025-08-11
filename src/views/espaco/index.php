@@ -4,8 +4,10 @@
     <?php include_once './src/components/header.php'; ?>
 
     <div class="list-container">
-        <h1>Espaços</h1>
-        <a href="index.php?action=create-espaco">+ Novo Espaço</a>
+        <div class="list-header">
+            <h1>Espaços</h1>
+            <a href="index.php?action=create-espaco"> Novo Espaço</a>
+        </div>
 
         <table>
             <thead>
@@ -29,7 +31,7 @@
                             <a href="index.php?action=edit-espaco-form&id=<?= $espaco['id'] ?>">Editar</a>
                             <form action="index.php?action=delete-espaco" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza?')">
                                 <input type="hidden" name="id" value="<?= $espaco['id'] ?>">
-                                <button type="submit" style="background:none; border:none; color:#007BFF; cursor:pointer; padding:0; font:inherit;">Excluir</button>
+                                <button type="submit" style="background:none; border:none; color:#b91c1c; cursor:pointer; padding:0; font:inherit;">Excluir</button>
                             </form>
                         </td>
                     </tr>

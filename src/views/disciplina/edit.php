@@ -4,7 +4,7 @@
   <body>
    <?php include_once './src/components/header.php'; ?>
 
-    <div class="form-container">
+    <div class="editar-espaco-form-container">
     <h1>Editar Disciplina</h1>
 
     <form action="index.php?action=edit-disciplina" method="POST">
@@ -25,6 +25,6 @@
       <button type="submit">Salvar Alterações</button>
     </form>
 
-    <a href="index.php?action=disciplina" style="margin-top: 20px; display: inline-block;">← Voltar para a lista</a>
+    <a href="index.php?action=disciplina" style="margin-top: 20px; display: inline-block;">Voltar para a lista</a>
   </div>
 </body>

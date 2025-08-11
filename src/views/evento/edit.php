@@ -2,7 +2,7 @@
 <body>
 <?php include_once './src/components/header.php'; ?>
 
-<div class="container">
+<div class="editar-tipoespaco-container">
     <h1>Editar Evento</h1>
 
     <form action="index.php?action=edit-evento" method="POST" style="max-width: 400px;">

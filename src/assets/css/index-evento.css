@@ -1,0 +1,93 @@
+/* Estilo exclusivo para Lista de Eventos */
+.list-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.list-container > h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #065f46;
+}
+
+.list-container > a {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #3ca55c, #2a9d8f);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.list-container > a:hover {
+  background: linear-gradient(90deg, #2a9d8f, #3ca55c);
+}
+
+.list-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
+  text-align: left;
+}
+
+.list-container thead {
+  background: linear-gradient(90deg, #3ca55c, #2a9d8f);
+  color: white;
+}
+
+.list-container thead th {
+  padding: 14px 12px;
+}
+
+.list-container tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.list-container tbody tr:hover {
+  background-color: #e6f0ea;
+}
+
+.list-container tbody td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.list-container tbody td a {
+  margin-right: 12px;
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.list-container tbody td a:hover {
+  text-decoration: underline;
+}
+
+.list-container tbody td form button {
+  color: #b91c1c;
+  font-weight: 600;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.list-container tbody td form button:hover {
+  text-decoration: underline;
+}
