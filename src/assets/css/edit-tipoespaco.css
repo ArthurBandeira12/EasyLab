@@ -1,6 +1,6 @@
 /* Container geral para o formulário */
 .editar-tipoespaco-container {
-  max-width: 550px; /* mesmo tamanho do container da listagem */
+  max-width: 550px; 
   margin: 40px auto;
   padding: 25px;
   background: #fff;
@@ -15,7 +15,7 @@
   margin-bottom: 18px;
   font-weight: 700;
   font-size: 1.8rem;
-  color: #065f46; /* mesmo verde do título da tabela */
+  color: #065f46; 
   text-align: center;
 }
 

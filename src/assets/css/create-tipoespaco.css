@@ -1,6 +1,6 @@
 /* Container geral para o formulário */
 .novo-tipoespaco-container {
-  max-width: 550px; /* igual ao container da listagem e edição */
+  max-width: 550px; 
   margin: 40px auto;
   padding: 25px;
   background: #fff;
@@ -46,7 +46,7 @@
 
 /* Botão principal */
 .novo-tipoespaco-container button {
-  width: 200px; /* tamanho fixo mais compacto, mas ainda visível */
+  width: 200px; 
   padding: 10px 0;
   margin-top: 20px;
   background: linear-gradient(90deg, #3ca55c, #2a9d8f);

@@ -1,6 +1,6 @@
 .user-edit {
     display: flex;
-    flex-direction: column; /* Para empilhar os formulários um embaixo do outro */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
  
