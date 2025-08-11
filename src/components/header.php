@@ -24,6 +24,7 @@ function avatarui($nome) {
                 <?php if (isset($_SESSION['usuario_id'])): ?>
                     <?php if (isAdmin()): ?>
                         <li><a href="index.php?action=create-espaco">Espaços</a></li>
+                        <li><a href="index.php?action=create-tipoespaco">Tipo Espaço</a></li>
                         <li><a href="index.php?action=create-evento">Evento</a></li>
                         <li><a href="index.php?action=disciplina">Disciplinas</a></li>
                         <li><a href="index.php?action=curso">Cursos</a></li>

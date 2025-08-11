@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificação de Reserva</title>
-    <link rel="stylesheet" href="/src/assets/css/edit.css"> <!-- CSS de edição -->
-</head>
+<?php
+include_once './src/components/head.php';
+?>
 <body>
-    <header class="header">
-        <h1 class="logo">EasyLab</h1>
-    </header>
-    
+   <?php include_once './src/components/header.php'; ?>
     <main class="modificar-outer-container">
         <section class="modificar-container">
             <div class="modificar-header">

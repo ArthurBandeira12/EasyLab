@@ -45,16 +45,6 @@
                 </select>
                 <br>
 
-                <label for="tipo_espaco">Tipo de Espaço</label>
-                <select id="tipo_espaco" name="tipo_espaco" required>
-                    <option value="">Selecione um tipo</option>
-                    <?php foreach ($tiposEspaco as $tipo): ?>
-                        <option value="<?= $tipo['id'] ?>"><?= $tipo['nome'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <br>
-
-
                 <label for="observacao">Observação</label>
                 <input type="text" id="observacao" name="observacao">
                 <br>
