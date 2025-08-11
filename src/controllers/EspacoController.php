@@ -61,7 +61,7 @@ class EspacoController
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function delete()
+  public function delete()
 {
     if (!isset($_POST['id'])) {
         echo "ID do espaço não fornecido.";
@@ -70,11 +70,27 @@ class EspacoController
 
     $id = (int)$_POST['id'];
 
-    $stmt = $this->db->prepare('DELETE FROM espaco WHERE id = :id');
-    $stmt->execute(['id' => $id]);
+    try {
+       
+        $this->db->beginTransaction();
 
-    header('Location: index.php?action=espaco');
-    exit;
+       
+        $stmt = $this->db->prepare('DELETE FROM reserva WHERE espaco_id = :id');
+        $stmt->execute(['id' => $id]);
+
+       
+        $stmt = $this->db->prepare('DELETE FROM espaco WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+
+        
+        $this->db->commit();
+
+        header('Location: index.php?action=espaco');
+        exit;
+    } catch (PDOException $e) {
+        $this->db->rollBack();
+        echo "Erro ao excluir espaço: " . $e->getMessage();
+    }
 }
 
 

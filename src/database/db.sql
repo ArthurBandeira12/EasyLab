@@ -60,7 +60,7 @@ CREATE TABLE reserva (
   CONSTRAINT fk_reserva_espaco
     FOREIGN KEY (espaco_id)
     REFERENCES espaco (id)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT fk_reserva_usuario
     FOREIGN KEY (usuario_id)

@@ -7,12 +7,14 @@ require_once './src/utils/auth.php';
 require_once './src/controllers/EspacoController.php';
 require_once './src/controllers/DisciplinaController.php';
 require_once './src/controllers/CursoController.php';
+require_once './src/controllers/EventoController.php';
 
 $reservaController = new ReservaController();
 $usuarioController = new UsuarioController();
 $espacoController = new EspacoController();
 $disciplinaController = new DisciplinaController();
 $cursoController = new CursoController();
+$eventoController = new EventoController();
 
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -70,13 +72,17 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'edit-curso-form' => $cursoController->edit((int)($_GET['id'] ?? 0)),
         'edit-curso' => $cursoController->update(),
         'delete-curso' => $cursoController->delete(),
+        'evento' => $eventoController->index(),
+        'create-evento' => $eventoController->create(),
+        'read-evento' => $eventoController->read((int)($_GET['id'] ?? 0)),
+        'edit-evento-form' => $eventoController->edit((int)($_GET['id'] ?? 0)),
+        'edit-evento' => $eventoController->update(),
+        'delete-evento' => $eventoController->delete(),
 
         default             => ['view' => './src/views/welcome.php', 'data' => []]
     };
 }
 
-
-// Resposta JSON para leitura
 if (in_array($action, ['read-reserva'])) {
     header('Content-Type: application/json');
     echo json_encode($result['data']);
@@ -86,7 +92,6 @@ if (in_array($action, ['read-reserva'])) {
 $view = $result['view'];
 $data = $result['data'];
 
-// Renderização da view
 if (!empty($view)) {
     extract($data);
     include($view);

@@ -20,52 +20,62 @@
             <input type="hidden" id="inicio_reserva" name="inicio_reserva">
             <input type="hidden" id="fim_reserva" name="fim_reserva">
             <! aqui foi onde fiz a modificaão para o usuario não enviar o formulario sem preencher os campos !>
-            <label for = "espaco_id">Espaço</label>
-            <select id="espaco_id" name="espaco_id" required>
-                <option value="">Selecione um espaço</option> //fiz uma pequena modific
-                <?php foreach ($espacos as $espaco): ?>
-                    <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-            <br>
-            <label for="disciplina_id">Disciplina</label>
-            <select id="disciplina_id" name="disciplina_id" required>
-                <option value="">Selecione uma disciplina</option>
-                <?php foreach ($disciplinas as $disciplina): ?>
-                    <option value="<?= $disciplina['id'] ?>"><?= $disciplina['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-            <br>
-            <label for="evento_id">Evento</label>
-            <select id="evento_id" name="evento_id" required>
-                <option value="">Selecione um evento</option>
-                <?php foreach ($eventos as $evento): ?>
-                    <option value="<?= $evento['id'] ?>"><?= $evento['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-            <br>
-    
-            <label for="observacao">Observação</label>
-            <input type="text" id="observacao" name="observacao">
-            <br>
-            
-            <div class="btn-submit">
-                <button type="submit">Adicionar reserva</button>
-            </div>
+                <label for="espaco_id">Espaço</label>
+                <select id="espaco_id" name="espaco_id" required>
+                    <option value="">Selecione um espaço</option> //fiz uma pequena modific
+                    <?php foreach ($espacos as $espaco): ?>
+                        <option value="<?= $espaco['id'] ?>"><?= $espaco['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <label for="disciplina_id">Disciplina</label>
+                <select id="disciplina_id" name="disciplina_id" required>
+                    <option value="">Selecione uma disciplina</option>
+                    <?php foreach ($disciplinas as $disciplina): ?>
+                        <option value="<?= $disciplina['id'] ?>"><?= $disciplina['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <label for="evento_id">Evento</label>
+                <select id="evento_id" name="evento_id" required>
+                    <option value="">Selecione um evento</option>
+                    <?php foreach ($eventos as $evento): ?>
+                        <option value="<?= $evento['id'] ?>"><?= $evento['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+
+                <label for="tipo_espaco">Tipo de Espaço</label>
+                <select id="tipo_espaco" name="tipo_espaco" required>
+                    <option value="">Selecione um tipo</option>
+                    <?php foreach ($tiposEspaco as $tipo): ?>
+                        <option value="<?= $tipo['id'] ?>"><?= $tipo['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+
+
+                <label for="observacao">Observação</label>
+                <input type="text" id="observacao" name="observacao">
+                <br>
+
+                <div class="btn-submit">
+                    <button type="submit">Adicionar reserva</button>
+                </div>
         </form>
     </div>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var form = document.querySelector('#modal form') || document.querySelector('form[action*="create-reserva"]');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            var data = document.getElementById('data').value;
-            var inicio = document.getElementById('inicio_hora').value;
-            var fim = document.getElementById('fim_hora').value;
-            document.getElementById('inicio_reserva').value = data + 'T' + inicio;
-            document.getElementById('fim_reserva').value = data + 'T' + fim;
-        });
-    }
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.querySelector('#modal form') || document.querySelector('form[action*="create-reserva"]');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                var data = document.getElementById('data').value;
+                var inicio = document.getElementById('inicio_hora').value;
+                var fim = document.getElementById('fim_hora').value;
+                document.getElementById('inicio_reserva').value = data + 'T' + inicio;
+                document.getElementById('fim_reserva').value = data + 'T' + fim;
+            });
+        }
+    });
 </script>

@@ -23,5 +23,35 @@ class Evento
 
         return $stmt->execute();
     }
+
+
+
+    public function getAll()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM evento");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getById($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM evento WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update()
+    {
+        $stmt = $this->conn->prepare("UPDATE evento SET nome = :nome WHERE id = :id");
+        return $stmt->execute(['nome' => $this->nome, 'id' => $this->id]);
+    }
+
+    public function delete()
+    {
+        $stmt = $this->conn->prepare("DELETE FROM evento WHERE id = :id");
+        return $stmt->execute(['id' => $this->id]);
+    }
 }
+
+
 ?>

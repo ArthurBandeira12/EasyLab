@@ -27,7 +27,7 @@ include_once './src/components/head.php';
       <button type="submit">Adicionar Espaço</button>
     </form>
     <a href="index.php?action=espaco" style="display:inline-block; margin-top:10px; text-decoration:none; color:#007BFF;">
-  ← Voltar para a lista de Espaços
+   Voltar para a lista de Espaços
    </a>
   </div>
 </body>

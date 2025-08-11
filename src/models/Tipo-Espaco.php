@@ -14,13 +14,50 @@ class TipoEspaco
         $this->conn = $db;
     }
 
-    function create()
+   
+    public function getAll()
     {
-        $query = "INSERT INTO " . $this->table . "(nome) VALUES (:nome)";
+        $query = "SELECT * FROM " . $this->table . " ORDER BY nome ASC";
         $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-        $stmt->bindParam(':nome', $this->nome);
+    
+    public function getById($id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :id LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
+    
+    public function create()
+    {
+        $query = "INSERT INTO " . $this->table . " (nome) VALUES (:nome)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+   
+    public function update()
+    {
+        $query = "UPDATE " . $this->table . " SET nome = :nome WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    
+    public function delete($id)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
