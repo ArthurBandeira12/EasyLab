@@ -100,10 +100,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         editable:     true,
 
         eventClick: function(info) {
-            window.open(
-                'index.php?action=edit-reserva&id=' + encodeURIComponent(info.event.id),
-                '_blank'
-            );
+            window.location.href = 'index.php?action=edit-reserva&id=' + encodeURIComponent(info.event.id);
         },
 
         dateClick: function (info) {
