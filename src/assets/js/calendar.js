@@ -149,8 +149,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             tooltip.className = 'fc-tooltip';
             tooltip.innerHTML = `
                 <strong>${info.event.title}</strong><br>
-                Espaço: ${info.event.extendedProps.espaco || ''}<br>
-                Usuário: ${info.event.extendedProps.usuario || ''}<br>
                 Início: ${info.event.start.toLocaleString()}<br>
                 Fim: ${info.event.end.toLocaleString()}<br>
                 Obs: ${info.event.extendedProps.observacao || '—'}
