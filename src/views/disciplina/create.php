@@ -3,7 +3,7 @@
   <body>
    <?php include_once './src/components/header.php'; ?>
 
-    <div class="form-container">
+    <div class="criar-espaco-form-container">
     <h1>Nova Disciplina</h1>
 
     <form action="index.php?action=create-disciplina" method="POST">
@@ -21,6 +21,6 @@
       <button type="submit">Adicionar Disciplina</button>
     </form>
 
-    <a href="index.php?action=disciplina" style="margin-top: 10px; display: inline-block;">← Voltar para a lista</a>
+    <a href="index.php?action=disciplina" style="margin-top: 10px; display: inline-block;">Voltar para a lista</a>
   </div>
 </body>

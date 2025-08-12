@@ -1,4 +1,4 @@
-/* Container geral para o formulário */
+
 .novo-evento-container {
   max-width: 550px;
   margin: 40px auto;
@@ -10,7 +10,7 @@
   color: #333;
 }
 
-/* Título */
+
 .novo-evento-container h2 {
   margin-bottom: 18px;
   font-weight: 700;
@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-/* Label */
+
 .novo-evento-container label {
   display: block;
   margin-top: 14px;
@@ -28,7 +28,6 @@
   color: #333;
 }
 
-/* Campo de texto */
 .novo-evento-container input[type="text"] {
   width: 100%;
   padding: 10px 12px;
@@ -44,7 +43,7 @@
   box-shadow: 0 0 4px rgba(42,157,143,0.4);
 }
 
-/* Botão principal */
+
 .novo-evento-container button {
   width: 200px;
   padding: 10px 0;
@@ -66,7 +65,7 @@
   background: linear-gradient(90deg, #2a9d8f, #3ca55c);
 }
 
-/* Link cancelar */
+
 .novo-evento-container a {
   display: block;
   text-align: center;

@@ -1,4 +1,4 @@
-/* Estilo exclusivo para a página Detalhes do Tipo de Espaço */
+
 .detalhes-tipoespaco-container {
   max-width: 600px;
   margin: 40px auto;
@@ -10,7 +10,7 @@
   color: #333;
 }
 
-/* Título */
+
 .detalhes-tipoespaco-container h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -19,7 +19,7 @@
   font-weight: 700;
 }
 
-/* Parágrafos com dados */
+
 .detalhes-tipoespaco-container p {
   font-size: 1rem;
   padding: 10px;
@@ -30,7 +30,7 @@
   color: #333;
 }
 
-/* Botão/link de voltar */
+
 .detalhes-tipoespaco-container a {
   display: inline-block;
   margin-top: 20px;

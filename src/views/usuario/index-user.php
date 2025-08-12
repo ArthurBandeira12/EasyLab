@@ -12,7 +12,7 @@ include_once __DIR__ . '/../../components/head.php';
     <p style="color: green;"><?= htmlspecialchars($mensagem) ?></p>
     <?php endif; ?>
 
-    <div class="user-edit">
+    <div class="edit-user">
         
         <form action="index.php?action=index-user" method="POST">
 
@@ -30,7 +30,7 @@ include_once __DIR__ . '/../../components/head.php';
 
         
         <form action="index.php?action=deletar-usuario" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível.');">
-            <div class="btn-user-edit">
+            <div class="btn-user-delete">
                 <button type="submit">Excluir Conta</button>
             </div>
         </form>

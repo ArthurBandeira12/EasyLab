@@ -1,4 +1,4 @@
-/* Container geral para o formulário */
+
 .editar-tipoespaco-container {
   max-width: 550px; 
   margin: 40px auto;
@@ -10,7 +10,7 @@
   color: #333;
 }
 
-/* Título harmonizado */
+
 .editar-tipoespaco-container h2 {
   margin-bottom: 18px;
   font-weight: 700;
@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-/* Labels */
+
 .editar-tipoespaco-container label {
   display: block;
   margin-top: 14px;
@@ -28,7 +28,7 @@
   color: #333;
 }
 
-/* Campo de texto */
+
 .editar-tipoespaco-container input[type="text"] {
   width: 100%;
   padding: 10px 12px;
@@ -44,7 +44,7 @@
   box-shadow: 0 0 4px rgba(42,157,143,0.4);
 }
 
-/* Botão principal (Atualizar) */
+
 .editar-tipoespaco-container button {
   width: 100%;
   padding: 10px 0;
@@ -63,7 +63,7 @@
   background: linear-gradient(90deg, #2a9d8f, #3ca55c);
 }
 
-/* Link "Cancelar" */
+
 .editar-tipoespaco-container a {
   display: block;
   text-align: center;

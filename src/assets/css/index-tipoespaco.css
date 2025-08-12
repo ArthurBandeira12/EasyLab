@@ -51,7 +51,7 @@
   border-radius: 6px;
 }
 
-/* Mudança: só adiciona padding-left para alinhar "Ações" com "Editar" */
+
 .tipoespaco-container thead th:last-child {
   padding-left: 80px; 
   text-align: left;
