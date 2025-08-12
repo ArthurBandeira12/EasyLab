@@ -53,6 +53,7 @@ CREATE TABLE reserva (
   inicio_reserva DATETIME NOT NULL,
   fim_reserva DATETIME NOT NULL,
   observacao VARCHAR(200) NULL,
+  status ENUM('Pendente','Indisponível','Disponível') NOT NULL DEFAULT 'Pendente',
   espaco_id INT NOT NULL,
   usuario_id INT NOT NULL,
   disciplina_id INT NOT NULL,
