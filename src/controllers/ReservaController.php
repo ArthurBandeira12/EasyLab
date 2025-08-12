@@ -29,8 +29,20 @@ class ReservaController
     public function read()
     {
         $sql = "SELECT r.*, e.nome FROM reserva r INNER JOIN evento e ON r.evento_id = e.id";
+        
+        if (!isAdmin()) {
+            $sql .= " WHERE r.usuario_id = :usuario_id";
+        }
+        
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        
+        // Executar com parâmetro se não for admin
+        if (!isAdmin()) {
+            $stmt->execute(['usuario_id' => $_SESSION['usuario_id']]);
+        } else {
+            $stmt->execute();
+        }
+        
         $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [
@@ -109,7 +121,7 @@ class ReservaController
             $this->reserva->evento_id       = $_POST['evento_id'];
 
             if ($this->reserva->create()) {
-                header("Location: home");
+                header("Location: index.php?action=home");
             }
         }
 
