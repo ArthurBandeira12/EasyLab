@@ -11,6 +11,7 @@ class Reserva
     public $inicio_reserva;
     public $fim_reserva;
     public $observacao;
+    public $status;
     public $espaco_id;
     public $usuario_id;
     public $disciplina_id;

@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <td>
                                     <?php if ($reserva['status'] === 'Indisponível'): ?>
                                         <span style="color: #e74c3c;">●</span> Indisponível
+                                        <?php elseif ($reserva['status'] === 'Pendente'): ?>
+                                            <span style="color: #ffff2eff;">●</span> Pendente
                                     <?php else: ?>
                                         <span style="color: #27ae60;">●</span> Disponível
                                     <?php endif; ?>

@@ -2,6 +2,43 @@ document.addEventListener('DOMContentLoaded', async function () {
     const modalContainer = document.getElementById('modalContainer');
     const calendarEl     = document.getElementById('calendar');
 
+    const closeModal = () => {
+        modalContainer.innerHTML = '';
+        document.body.classList.remove('no-scroll');
+    };
+
+    function mostrarModalConfirmacao(mensagem) {
+        document.getElementById('mensagem-modal').textContent = mensagem;
+        document.getElementById('modal-confirmacao').style.display = 'block';
+    }
+
+    // NOVO: modal de pergunta (confirm customizado)
+    function mostrarModalPergunta(mensagem, callback) {
+        const modal = document.getElementById('modal-pergunta');
+        const msg   = document.getElementById('mensagem-pergunta');
+        const btnSim = document.getElementById('btn-confirmar-sim');
+        const btnNao = document.getElementById('btn-confirmar-nao');
+
+        msg.textContent = mensagem;
+        modal.style.display = 'flex';
+
+        btnSim.onclick = () => {
+            modal.style.display = 'none';
+            callback(true);
+        };
+        btnNao.onclick = () => {
+            modal.style.display = 'none';
+            callback(false);
+        };
+    }
+
+    const btnFecharConfirmacao = document.querySelector('#modal-confirmacao button');
+    if (btnFecharConfirmacao) {
+        btnFecharConfirmacao.addEventListener('click', function () {
+            document.getElementById('modal-confirmacao').style.display = 'none';
+        });
+    }
+
     // Captura de submit para update-reserva
     document.addEventListener('submit', function (e) {
         const form = e.target;
@@ -14,22 +51,17 @@ document.addEventListener('DOMContentLoaded', async function () {
                     if (json.success) {
                         closeModal();
                         calendar.refetchEvents();
-                        alert('Reserva atualizada com sucesso!');
+                        mostrarModalConfirmacao('Reserva atualizada com sucesso!');
                     } else {
-                        alert('Erro: ' + json.message);
+                        mostrarModalConfirmacao('Erro: ' + json.message);
                     }
                 })
                 .catch(err => {
                     console.error(err);
-                    alert('Erro inesperado ao atualizar a reserva.');
+                    mostrarModalConfirmacao('Erro inesperado ao atualizar a reserva.');
                 });
         }
     });
-
-    const closeModal = () => {
-        modalContainer.innerHTML = '';
-        document.body.classList.remove('no-scroll');
-    };
 
     function inicializarCampoData() {
         var dataInput = document.getElementById('data');
@@ -86,6 +118,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 inicializarFormularioReserva();
             });
     };
+
     const calendar = new FullCalendar.Calendar(calendarEl, {
         headerToolbar: {
             left:   'prev,next today',
@@ -135,7 +168,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     calendar.render();
 
-    // Carrega eventos via AJAX (read-reserva) e adiciona ao calendário
     try {
         const res  = await fetch('index.php?action=read-reserva');
         const json = await res.json();
@@ -153,28 +185,64 @@ document.addEventListener('DOMContentLoaded', async function () {
                     disciplina_id: reserva.disciplina_id,
                     observacao:    reserva.observacao,
                     data:          reserva.data,
-                    espaco:        reserva.espaco,    // caso JSON retorne
-                    usuario:       reserva.nome_usuario // idem
+                    espaco:        reserva.espaco,
+                    usuario:       reserva.nome_usuario
                 }
             };
         });
 
         calendar.addEventSource(eventos);
 
-        // Popula Lista de Reservas do Dia
         const hoje = new Date().toISOString().slice(0, 10);
         const reservasHoje = json.reservas.filter(r => r.inicio_reserva.startsWith(hoje));
         const cont = document.querySelector('#lista-reservas');
+
         if (cont) {
-            if (!reservasHoje.length) cont.innerHTML = `<p>Nenhuma reserva para hoje.</p>`;
-            else {
+            if (!reservasHoje.length) {
+                cont.innerHTML = `<p>Nenhuma reserva para hoje.</p>`;
+            } else {
                 let html = '<ul>';
                 reservasHoje.forEach(r => {
                     const ini = r.inicio_reserva.substring(11, 16);
-                    const fi  = r.fim_reserva.substring(11, 16);
-                    html += `<li><b>${r.nome}</b>: ${ini} - ${fi}</li>`;
+                    const fi = r.fim_reserva.substring(11, 16);
+                    html += `<li><b>${r.nome}</b>: ${ini} - ${fi} 
+                    <button class="btn-confirmar" data-id="${r.id}">Confirmar</button></li>`; // Botão ao lado da reserva para confirmar a reserva
                 });
                 cont.innerHTML = html + '</ul>';
+
+                // Configurações para confirmar reserva
+                document.querySelectorAll('.btn-confirmar').forEach(botao => {
+                    botao.addEventListener('click', function () {
+                        const idReserva = this.dataset.id;
+                        const botaoClicado = this;
+
+                        mostrarModalPergunta("Tem certeza que deseja confirmar o uso da reserva?", async (confirmar) => {
+                            if (!confirmar) return;
+
+                            try {
+                                const resposta = await fetch('index.php?action=confirm-reserva', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ id: idReserva })
+                                });
+                                
+                                const resultado = await resposta.json();
+                                console.log('Resposta:', resultado);
+
+                                mostrarModalConfirmacao(resultado.message);
+
+                                if (resultado.success) {
+                                    botaoClicado.disabled = true;
+                                    botaoClicado.textContent = 'Confirmado';
+                                }
+
+                            } catch (erro) {
+                                mostrarModalConfirmacao('Erro ao confirmar reserva. Tente novamente.');
+                                console.error(erro);
+                            }
+                        });
+                    });
+                });
             }
         }
 

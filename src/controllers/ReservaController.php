@@ -109,7 +109,7 @@ class ReservaController
             $this->reserva->evento_id       = $_POST['evento_id'];
 
             if ($this->reserva->create()) {
-                header("Location: home");
+                header("Location: index.php?action=home");
             }
         }
 
@@ -199,7 +199,7 @@ class ReservaController
                     'evento'      => $reserva['evento_nome'],
                     'solicitante' => 'Professor',
                     'nome'        => $reserva['usuario_nome'],
-                    'status'      => 'Indisponível'
+                    'status'      => $reserva['status'] 
                 ];
                 $last_end = $fim_reserva;
             }
@@ -314,4 +314,72 @@ class ReservaController
         header('Location: index.php?action=home');
         exit;
     }
+
+    public function confirm()
+    {
+        header('Content-Type: application/json');
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $id = $data['id'] ?? null;
+        $usuarioId = $_SESSION['usuario_id'] ?? null;
+
+        if (!$id || !$usuarioId) {
+            echo json_encode(['success' => false, 'message' => 'Dados inválidos ou usuário não autenticado']);
+            exit;
+        }
+
+        $stmt = $this->db->prepare("SELECT id, usuario_id, status, inicio_reserva FROM reserva WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $reserva = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$reserva) { // Apenas para verificar mesmo se a reserva existe
+            echo json_encode(['success' => false, 'message' => 'Reserva não encontrada!']);
+            exit;
+        }
+
+        if ($reserva['usuario_id'] != $usuarioId) { // Se outro usuário tentar marcar a reserva como em uso
+            echo json_encode(['success' => false, 'message' => 'Você não tem permissão para confirmar esta reserva!']);
+            exit;
+        }
+
+        if ($reserva['status'] === 'Indisponível') { // Se o botão confirmar der algum problema ou a pessoa achar que não confirmou
+            echo json_encode(['success' => false, 'message' => 'Reserva já está confirmada!']);
+            exit;
+        }
+
+        if ($reserva['status'] !== 'Pendente') { 
+            echo json_encode(['success' => false, 'message' => "Reserva com status '{$reserva['status']}' não pode ser confirmada!"]);
+            exit;
+        }
+
+        $tz = new DateTimeZone('America/Recife'); // Pega o fuso horário de Recife
+        $inicio = new DateTime($reserva['inicio_reserva'], $tz); // Hora da reserva
+        $agora  = new DateTime('now', $tz); // Hora atual
+        $diffSeg = $agora->getTimestamp() - $inicio->getTimestamp();
+
+        if ($diffSeg < 0) { // Se a pessoa tentar confirmar reserva antes da hora, vai ser impedida
+            echo json_encode(['success' => false, 'message' => 'Ainda não é hora de confirmar. A reserva começa em ' . $inicio->format('d/m/Y H:i')]);
+            exit;
+        }
+
+        if ($diffSeg > 15 * 60) { // Durante o tempo-limite de 15 minutos, se ultrapassar a reserva é deletada e o espaço fica disponível.
+            $upd = $this->db->prepare("DELETE FROM reserva WHERE id = :id AND status = 'Pendente'");
+            $upd->execute(['id' => $id]);
+            echo json_encode(['success' => false, 'message' => 'Tempo para confirmação expirou. A reserva foi cancelada.']);
+            exit;
+        }
+
+        $upd = $this->db->prepare("UPDATE reserva SET status = 'Indisponível' WHERE id = :id AND status = 'Pendente'");
+        $upd->execute(['id' => $id]);
+
+        if ($upd->rowCount() > 0) {
+            echo json_encode(['success' => true, 'message' => 'Reserva confirmada com sucesso!']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Não foi possível confirmar (status já alterado)!']);
+        }
+
+        exit;
+    }
+
+
 }

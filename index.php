@@ -50,6 +50,7 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'list-reserva'      => $reservaController->index(),
         'read-reserva'      => $reservaController->read(),
         'disponibilidade'   => $reservaController->disponibilidade(),
+        'confirm-reserva' => $reservaController->confirm((int)($_POST['id'] ?? 0)),
         'update-reserva'    => $reservaController->update(),
         'edit-reserva'      => $reservaController->edit((int)($_GET['id'] ?? 0)),
         'delete-reserva'    => $isPost ? $reservaController->delete((int)($_POST['id'] ?? 0)) : null,
