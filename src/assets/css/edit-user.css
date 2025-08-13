@@ -1,11 +1,10 @@
-
 .edit-user {
   max-width: 500px;
   margin: 40px auto;
   background: #fff;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -41,7 +40,7 @@
 .edit-user select:focus {
   outline: none;
   border-color: #2fa06c;
-  box-shadow: 0 0 4px rgba(47,160,108,0.4);
+  box-shadow: 0 0 4px rgba(47, 160, 108, 0.4);
 }
 
 
@@ -77,9 +76,9 @@
 
 
 .btn-user-delete button {
-  background: #e74c3c; 
+  background: #e74c3c;
 }
 
 .btn-user-delete button:hover {
-  background: #c0392b; 
+  background: #c0392b;
 }

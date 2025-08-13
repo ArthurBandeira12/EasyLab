@@ -1,6 +1,5 @@
-
 .editar-tipoespaco-container {
-  max-width: 550px; 
+  max-width: 550px;
   margin: 40px auto;
   padding: 25px;
   background: #fff;
@@ -15,7 +14,7 @@
   margin-bottom: 18px;
   font-weight: 700;
   font-size: 1.8rem;
-  color: #065f46; 
+  color: #065f46;
   text-align: center;
 }
 
@@ -41,7 +40,7 @@
 .editar-tipoespaco-container input[type="text"]:focus {
   outline: none;
   border-color: #2a9d8f;
-  box-shadow: 0 0 4px rgba(42,157,143,0.4);
+  box-shadow: 0 0 4px rgba(42, 157, 143, 0.4);
 }
 
 

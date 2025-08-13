@@ -21,10 +21,10 @@ $tipoEspacoController = new TipoEspacoController();
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
 
-$rotasPublicas = ['login-form', 'login-usuario', 'registrar-form', 'create-usuario', 'welcome'];
+$rotasPublicas = ['login-form', 'login-usuario', 'registrar-form', 'create-usuario'];
 
 if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
-    $result = ['view' => './src/views/welcome.php', 'data' => []];
+    $result = ['view' => './src/views/auth/login.php', 'data' => []];
 } else if (isset($_SESSION['usuario_id']) && in_array($action, $rotasPublicas)) {
 
     header('Location: index.php?action=home');
@@ -32,11 +32,40 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
 } else {
 
     $rotasAdmin = [
-        'create-espaco'
+        'create-espaco',
+        'espaco',
+        'read-espaco',
+        'edit-espaco-form',
+        'edit-espaco',
+        'delete-espaco',
+        'disciplina',
+        'create-disciplina',
+        'read-disciplina',
+        'edit-disciplina-form',
+        'edit-disciplina',
+        'delete-disciplina',
+        'curso',
+        'create-curso',
+        'read-curso',
+        'edit-curso-form',
+        'edit-curso',
+        'delete-curso',
+        'evento',
+        'create-evento',
+        'read-evento',
+        'edit-evento-form',
+        'edit-evento',
+        'delete-evento',
+        'tipoespaco',
+        'create-tipoespaco',
+        'read-tipoespaco',
+        'edit-tipoespaco',
+        'update-tipoespaco',
+        'delete-tipoespaco'
     ];
 
     if (in_array($action, $rotasAdmin) && !isAdmin()) {
-        echo "Acesso restrito a administradores.";
+        echo "Acesso permitido apenas a administradores.";
         exit;
     }
 
@@ -87,7 +116,7 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'edit-tipoespaco'   => $tipoEspacoController->edit((int)($_GET['id'] ?? 0)),
         'update-tipoespaco' => $tipoEspacoController->update(),
         'delete-tipoespaco' => $tipoEspacoController->delete(),
-        default             => ['view' => './src/views/welcome.php', 'data' => []]
+        default             => ['view' => './src/views/auth/login.php', 'data' => []]
     };
 }
 

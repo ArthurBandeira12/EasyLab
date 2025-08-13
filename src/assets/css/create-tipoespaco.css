@@ -1,6 +1,5 @@
-
 .novo-tipoespaco-container {
-  max-width: 550px; 
+  max-width: 550px;
   margin: 40px auto;
   padding: 25px;
   background: #fff;
@@ -41,12 +40,12 @@
 .novo-tipoespaco-container input[type="text"]:focus {
   outline: none;
   border-color: #2a9d8f;
-  box-shadow: 0 0 4px rgba(42,157,143,0.4);
+  box-shadow: 0 0 4px rgba(42, 157, 143, 0.4);
 }
 
 
 .novo-tipoespaco-container button {
-  width: 200px; 
+  width: 200px;
   padding: 10px 0;
   margin-top: 20px;
   background: linear-gradient(90deg, #3ca55c, #2a9d8f);

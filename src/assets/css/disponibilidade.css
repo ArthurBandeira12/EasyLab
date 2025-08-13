@@ -1,17 +1,3 @@
-body {
-    background: #f5f6fa;
-    margin: 0;
-    font-family: 'Inter', Arial, sans-serif;
-}
-
-/*.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-}
-    */
-
 .disponibilidade-outer-container {
     display: flex;
     justify-content: center;
