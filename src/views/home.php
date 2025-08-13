@@ -40,6 +40,20 @@ include_once 'src/utils/user-avatar.php';
                 <section class="reserva-container">
                     <h2>Reservas do Dia</h2>
                     <div id="lista-reservas"></div>
+                <div id="modal-confirmacao">
+                    <p id="mensagem-modal">Reserva confirmada com sucesso!</p>
+                    <button>Fechar</button>
+                </div>
+
+                <div id="modal-pergunta" style="display:none;">
+                    <div class="modal-content">
+                        <p id="mensagem-pergunta">Tem certeza?</p>
+                        <div class="modal-buttons">
+                            <button id="btn-confirmar-sim">Sim</button>
+                            <button id="btn-confirmar-nao">Não</button>
+                        </div>
+                    </div>
+                </div>
                     <div class="btn-disponibilidade-wrapper">
                         <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
                     </div>
