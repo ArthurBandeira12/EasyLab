@@ -36,10 +36,10 @@ include_once 'src/utils/user-avatar.php';
                 <section class="calendar-container">
                     <div id='calendar'></div>
                 </section>
-
-                <section class="reserva-container">
-                    <h2>Reservas do Dia</h2>
-                    <div id="lista-reservas"></div>
+                
+           <section class="reserva-container">
+                <h2 class="reserva-diaria">Reservas do Dia</h2>
+                <div id="lista-reservas"></div>
                 <div id="modal-confirmacao">
                     <p id="mensagem-modal">Reserva confirmada com sucesso!</p>
                     <button>Fechar</button>
@@ -54,6 +54,7 @@ include_once 'src/utils/user-avatar.php';
                         </div>
                     </div>
                 </div>
+
                     <div class="btn-disponibilidade-wrapper">
                         <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
                     </div>

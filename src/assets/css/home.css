@@ -101,40 +101,58 @@
     margin: 0;
 }
 
-.btn-confirmar{
-    display: inline-block;
-    padding: 0.4em;
-    background: #16a085;
-    margin-top: 2%;
-    margin-left: 19%;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+    #modal-confirmacao {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-align: center;
+    border-radius: 8px;
+    }
 
-#modal-confirmacao p {
+    .reserva-diaria{
+        margin-bottom: 1.1rem;
+    }
+
+    .btn-confirmar{
+        display: inline-block;
+        padding: 0.4em;
+        background: #16a085;
+        margin-top: 2%;
+        margin-left: 19%;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    
+    #modal-confirmacao p {
     margin-bottom: 15px;
     font-size: 16px;
     color: #333;
-}
+    }
 
-#modal-confirmacao button {
+    #modal-confirmacao button {
     padding: 8px 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+    }
 
-#modal-confirmacao button:hover {
-background-color: #45a049;
-}
-
+    #modal-confirmacao button:hover {
+    background-color: #45a049;
+    }
 
 .btn-close-modal {
     background: none;
