@@ -2,6 +2,7 @@
 @import url('home.css');
 @import url('calendar.css');
 @import url('edit-user.css');
+@import url('edit-reserva.css');
 @import url('auth-form.css');
 
 * {

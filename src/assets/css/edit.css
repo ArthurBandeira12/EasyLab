@@ -14,14 +14,13 @@
 }
 
 
-.modificar-outer-container {
+.edit-layout-container {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
-  margin-left: 25%;
-  margin-top: 5%;
+  justify-content: flex-start;
+  margin: 2rem 0;
 }
-.modificar-container {
+
+.edit-container {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -47,22 +46,6 @@
   gap: 1.5rem;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1rem 2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
 input,
 select,
 textarea {
@@ -81,46 +64,24 @@ textarea {
   grid-column: 1 / -1;
 }
 
-
-.form-buttons, .btn-canreserva  { 
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 0rem;
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #2E2E2E;
+    padding: 0.50rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-.btn-salvar {
-  padding: 0.7em 1.5em;
-  background: #16a085;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
+.btn-close:hover {
+    background-color: #E1E1E1;
 }
 
-.btn-salvar:hover {
-  background: #138d75;
+.btn-close:active {
+    background-color: #CDCDCD;
 }
-
-.btn-cancelar {
-  background: none;
-  border: none;
-  color: #038C4C;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.btn-canreserva{  
-  margin-left: 685px;
-  padding: 0.7em 1.5em;
-  background: red;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 
 .fc-tooltip {
   position: absolute;

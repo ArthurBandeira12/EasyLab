@@ -1,3 +1,15 @@
+.fc {
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+    padding: 0.5rem;
+}
+
+.fc-toolbar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #626262;
+}
+
 .fc .fc-toolbar button {
     background: none;
     border: none;
@@ -13,3 +25,26 @@
 .fc .fc-toolbar button:focus {
     outline: none;
 }
+
+
+.fc-daygrid-day {
+    border: 1px solid #A3A3A3;
+}
+
+.fc-daygrid-day-top {
+    justify-content: flex-start;
+    font-weight: 600;
+    font-size: 16px;
+    color: #666666;
+}
+
+.fc-day-today {
+    background-color: #dff5e7 !important;
+}
+
+/* .fc-event {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+} */

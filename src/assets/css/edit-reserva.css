@@ -1,0 +1,87 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    gap: 1rem 2rem;
+    grid-template-areas:
+        "data data"
+        "hora-inicio hora-fim"
+        "espaco espaco"
+        "disciplina evento"
+        "observacao observacao"
+        "btn-salvar btn-salvar";
+}
+
+.data {
+    grid-area: data;
+}
+
+.hora-inicio {
+    grid-area: hora-inicio;
+}
+
+.hora-fim {
+    grid-area: hora-fim;
+}
+
+.espaco {
+    grid-area: espaco;
+}
+
+.disciplina {
+    grid-area: disciplina;
+}
+
+.evento {
+    grid-area: evento;
+}
+
+.observacao {
+    grid-area: observacao;
+}
+
+.btn-salvar {
+    grid-area: btn-salvar;
+}
+
+.btn-salvar,
+.btn-deletar-reserva {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-salvar {
+  padding: 0.7em 1.5em;
+  background: #16a085;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-salvar:hover {
+     background: #138d75;
+}
+
+.btn-deletar-reserva {
+    background: transparent;
+    border: 1px solid #e53935;
+    border-radius: 6px;
+    color: #e53935;
+    padding: 0.6rem 1.2rem;
+    margin: 1rem 0 0 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-deletar-reserva:hover {
+    background-color: #c62828;
+    border: 1px solid #e53935;
+    border-radius: 6px;
+    color: #fff;
+    transition: background 0.2s;
+}

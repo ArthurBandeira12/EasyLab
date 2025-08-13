@@ -6,7 +6,7 @@
                 <i class="fa-solid fa-x"></i>
             </button>
         </header>
-        <hr>
+
         <form action="index.php?action=create-reserva" method="POST">
             <label for="data">Data</label>
             <input type="date" id="data" name="data" required>
