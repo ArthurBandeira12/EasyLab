@@ -28,9 +28,28 @@ class ReservaController
 
     public function read()
     {
-        $sql = "SELECT r.*, e.nome FROM reserva r INNER JOIN evento e ON r.evento_id = e.id";
+        $sql = "SELECT r.*, 
+                       e.nome as evento_nome,
+                       esp.nome as espaco_nome,
+                       u.nome as nome_usuario
+                FROM reserva r 
+                INNER JOIN evento e ON r.evento_id = e.id
+                INNER JOIN espaco esp ON r.espaco_id = esp.id
+                LEFT JOIN usuario u ON r.usuario_id = u.id";
+        
+        if (!isAdmin()) {
+            $sql .= " WHERE r.usuario_id = :usuario_id";
+        }
+        
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        
+        // Executar com parâmetro se não for admin
+        if (!isAdmin()) {
+            $stmt->execute(['usuario_id' => $_SESSION['usuario_id']]);
+        } else {
+            $stmt->execute();
+        }
+        
         $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [

@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const fim    = reserva.fim_reserva.substring(11, 16);
             return {
                 id: reserva.id,
-                title: `${reserva.nome} ${inicio}~${fim}`,
+                title: `${reserva.evento_nome} ${inicio}~${fim}`,
                 start: reserva.inicio_reserva,
                 end:   reserva.fim_reserva,
                 extendedProps: {
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     disciplina_id: reserva.disciplina_id,
                     observacao:    reserva.observacao,
                     data:          reserva.data,
-                    espaco:        reserva.espaco,
+                    espaco:        reserva.espaco_nome,
                     usuario:       reserva.nome_usuario
                 }
             };
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 reservasHoje.forEach(r => {
                     const ini = r.inicio_reserva.substring(11, 16);
                     const fi = r.fim_reserva.substring(11, 16);
-                    html += `<li><b>${r.nome}</b>: ${ini} - ${fi} 
+                    html += `<li><b>${r.evento_nome}</b>: ${ini} - ${fi} 
                     <button class="btn-confirmar" data-id="${r.id}">Confirmar</button></li>`; // Botão ao lado da reserva para confirmar a reserva
                 });
                 cont.innerHTML = html + '</ul>';
