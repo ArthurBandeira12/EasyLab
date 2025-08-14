@@ -76,6 +76,6 @@ CREATE TABLE reserva (
   CONSTRAINT fk_reserva_evento
     FOREIGN KEY (evento_id)
     REFERENCES evento (id)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
