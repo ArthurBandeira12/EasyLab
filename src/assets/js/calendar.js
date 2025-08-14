@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('modal-confirmacao').style.display = 'block';
     }
 
-    // NOVO: modal de pergunta (confirm customizado)
     function mostrarModalPergunta(mensagem, callback) {
         const modal = document.getElementById('modal-pergunta');
         const msg   = document.getElementById('mensagem-pergunta');

@@ -32,7 +32,7 @@ include_once 'src/utils/user-avatar.php';
             <section class="edit-container">
                 <header class="modal-header">
                     <h3 class="modal-title">Modificação de Reserva</h3>
-                    <button class="btn-close">
+                    <button class="btn-close-modal">
                         <a href="index.php?action=home">
                             <i class="fa-solid fa-x"></i>
                         </a>

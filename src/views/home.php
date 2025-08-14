@@ -45,7 +45,7 @@ include_once 'src/utils/user-avatar.php';
                     <button>Fechar</button>
                 </div>
 
-                <div id="modal-pergunta" style="display:none;">
+                <div id="modal-pergunta" class="modal" style="display:none;">
                     <div class="modal-content">
                         <p id="mensagem-pergunta">Tem certeza?</p>
                         <div class="modal-buttons">
@@ -54,6 +54,7 @@ include_once 'src/utils/user-avatar.php';
                         </div>
                     </div>
                 </div>
+
 
                     <div class="btn-disponibilidade-wrapper">
                         <a href="index.php?action=disponibilidade" class="btn-disponibilidade">Ver Disponibilidade</a>
