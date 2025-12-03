@@ -35,6 +35,8 @@ include_once 'src/utils/user-avatar.php';
             <?php endif; ?>
 
             <div class="edit-user">
+                <img src="<?= avatarui($_SESSION['nome'] ?? 'Usuário') ?>" alt="Avatar">
+
 
                 <form action="index.php?action=index-user" method="POST">
 

@@ -1,84 +1,62 @@
 .edit-user {
-  max-width: 500px;
+  width: 90%;
+  max-width: 900px;      
   margin: 40px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  background: #6bb49c;
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
 
 
-.edit-user h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #006b41;
-  font-weight: bold;
+.edit-user img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
 
 
 .edit-user label {
+  text-align: left;
   display: block;
-  margin-top: 12px;
-  margin-bottom: 4px;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
-
-
-.edit-user input,
-.edit-user select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.edit-user input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: border 0.2s;
 }
-
-.edit-user input:focus,
-.edit-user select:focus {
-  outline: none;
-  border-color: #2fa06c;
-  box-shadow: 0 0 4px rgba(47, 160, 108, 0.4);
+.edit-user form {
+  width: 70%;
+  margin: 0 auto;
 }
 
 
 .edit-user button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  background: #2fa06c;
+  width: 70%;
+  max-width: 350px;
+  padding: 12px;
+  background: #0b5742;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  margin: 10px auto;
 }
-
-.edit-user button:hover {
-  background: #278b5c;
-}
-
-
-.edit-user a {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  text-decoration: none;
-  color: #2fa06c;
-}
-
-.edit-user a:hover {
-  text-decoration: underline;
-}
-
-
 .btn-user-delete button {
-  background: #e74c3c;
+  background: #d64545;
 }
-
-.btn-user-delete button:hover {
-  background: #c0392b;
+.edit-user img {
+  display: block;
+  margin: 0 auto 20px auto;
 }
