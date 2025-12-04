@@ -318,6 +318,15 @@ class ReservaController
         $disciplinas  = $this->db->query("SELECT id, nome FROM disciplina")->fetchAll(PDO::FETCH_ASSOC);
         $eventos      = $this->db->query("SELECT id, nome FROM evento")->fetchAll(PDO::FETCH_ASSOC);
 
+        if (!$reserva) {
+            echo "<script>alert('Reserva não encontrada!'); window.location.href='index.php?action=home';</script>";
+            exit;
+        }
+        if ($reserva->usuario_id != $_SESSION['usuario_id'] && !isAdmin()) {
+            echo "<script>alert('Você não tem permissão para editar esta reserva!'); window.location.href='index.php?action=home';</script>";
+            exit;
+        }
+
         return [
             'view' => './src/views/reserva/edit.php',
             'data' => ['reserva' => $reserva, 'espacos' => $espacos, 'disciplinas' => $disciplinas, 'eventos' => $eventos]
