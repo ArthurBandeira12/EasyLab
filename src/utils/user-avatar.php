@@ -1,6 +1,10 @@
 <?php
 function avatarui($nome)
 {
+    if (isset($_SESSION['foto_perfil']) && !empty($_SESSION['foto_perfil'])) {
+        return './src/assets/userimage/' . htmlspecialchars($_SESSION['foto_perfil']);
+    }
+
     $iniciais = "";
     $palavras = explode(" ", $nome);
     foreach ($palavras as $palavra) {

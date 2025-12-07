@@ -23,7 +23,8 @@ CREATE TABLE usuario (
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(100) NOT NULL,
-  papel ENUM('admin', 'usuario') NOT NULL DEFAULT 'usuario'
+  papel ENUM('admin', 'usuario') NOT NULL DEFAULT 'usuario',
+  foto_perfil VARCHAR(255) NULL DEFAULT NULL
 );
 
 CREATE TABLE curso (

@@ -11,6 +11,7 @@ class Usuario
     public $nome;
     public $email;
     public $senha;
+    public $foto_perfil;
 
     public function __construct($db)
     {
@@ -37,6 +38,10 @@ class Usuario
         $query .= ", senha = :senha";
     }
 
+    if ($this->foto_perfil !== null) {
+        $query .= ", foto_perfil = :foto_perfil";
+    }
+
     $query .= " WHERE id = :id";
 
     $stmt = $this->conn->prepare($query);
@@ -47,6 +52,10 @@ class Usuario
 
     if (!empty($this->senha)) {
         $stmt->bindParam(':senha', $this->senha);
+    }
+
+    if ($this->foto_perfil !== null) {
+        $stmt->bindParam(':foto_perfil', $this->foto_perfil);
     }
 
     return $stmt->execute();

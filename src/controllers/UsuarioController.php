@@ -87,6 +87,7 @@ class UsuarioController
                 $_SESSION['email'] = $usuario['email'];
                 $_SESSION['nome'] = $usuario['nome'];
                 $_SESSION['papel'] = $usuario['papel'];
+                $_SESSION['foto_perfil'] = $usuario['foto_perfil'];
                 header('Location: index.php?action=home');
                 exit;
             } else {
@@ -149,9 +150,53 @@ public function indexUser(): array {
         $usuario->email = $_POST['email'];
         $usuario->senha = !empty($_POST['senha']) ? password_hash($_POST['senha'], PASSWORD_BCRYPT) : null;
 
+        // area de uploadd de foto de perfil
+        if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = __DIR__ . '/../assets/userimage/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            $fileExtension = pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION);
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+            if (in_array(strtolower($fileExtension), $allowedExtensions)) {
+                $newFileName = 'user_' . $_SESSION['usuario_id'] . '_' . time() . '.' . $fileExtension;
+                $uploadPath = $uploadDir . $newFileName;
+
+                if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $uploadPath)) {
+                    if (!empty($_SESSION['foto_perfil']) && file_exists(__DIR__ . '/../assets/userimage/' . $_SESSION['foto_perfil'])) {
+                        unlink(__DIR__ . '/../assets/userimage/' . $_SESSION['foto_perfil']);
+                    }
+                    $usuario->foto_perfil = $newFileName;
+                } else {
+                    $mensagem = "Erro ao fazer upload da imagem.";
+                }
+            } else {
+                $mensagem = "Formato de imagem não permitido. Use: jpg, jpeg, png, gif ou webp.";
+            }
+        } else {
+            // Verificar se houve erro no upload
+            if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $errorMessages = [
+                    UPLOAD_ERR_INI_SIZE => 'Imagem muito grande! O tamanho máximo é 2MB.',
+                    UPLOAD_ERR_FORM_SIZE => 'Imagem muito grande! O tamanho máximo é 2MB.',
+                    UPLOAD_ERR_PARTIAL => 'Upload incompleto, tente novamente.',
+                    UPLOAD_ERR_NO_TMP_DIR => 'Erro no servidor (diretório temporário).',
+                    UPLOAD_ERR_CANT_WRITE => 'Erro ao gravar arquivo no servidor.',
+                    UPLOAD_ERR_EXTENSION => 'Upload bloqueado por extensão PHP.'
+                ];
+                $mensagem = $errorMessages[$_FILES['foto_perfil']['error']] ?? 'Erro desconhecido no upload.';
+            }
+            $usuario->foto_perfil = null; // Não atualiza foto se não houver upload
+        }
+
         if ($usuario->update()) {
             $_SESSION['nome'] = $usuario->nome;
             $_SESSION['email'] = $usuario->email;
+            if ($usuario->foto_perfil !== null) {
+                $_SESSION['foto_perfil'] = $usuario->foto_perfil;
+            }
             $mensagem = "Dados atualizados com sucesso!";
         } else {
             $mensagem = "Erro ao atualizar os dados.";
