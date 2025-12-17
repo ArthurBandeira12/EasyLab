@@ -21,11 +21,15 @@ $tipoEspacoController = new TipoEspacoController();
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $isPost = $_SERVER['REQUEST_METHOD'] === 'POST';
 
-$rotasPublicas = ['login-form', 'login-usuario', 'registrar-form', 'create-usuario'];
+$rotasPublicas = ['login-form', 'login-usuario', 'registrar-form', 'create-usuario', 'ajuda'];
 
 if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
     $result = ['view' => './src/views/auth/login.php', 'data' => []];
-} else if (isset($_SESSION['usuario_id']) && in_array($action, $rotasPublicas)) {
+
+    /* acesso logado - index ajuda */ 
+} else if (isset($_SESSION['usuario_id']) && in_array($action, ['login-form', 'login-usuario', 'registrar-form', 'create-usuario'])) {
+    header('Location: index.php?action=home');
+    exit;
 
     header('Location: index.php?action=home');
     exit;
@@ -116,6 +120,7 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'edit-tipoespaco'   => $tipoEspacoController->edit((int)($_GET['id'] ?? 0)),
         'update-tipoespaco' => $tipoEspacoController->update(),
         'delete-tipoespaco' => $tipoEspacoController->delete(),
+        'ajuda' => ['view' => './src/views/ajuda/index.php', 'data' => []],
         default             => ['view' => './src/views/auth/login.php', 'data' => []]
     };
 }
