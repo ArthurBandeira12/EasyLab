@@ -32,8 +32,10 @@ include_once 'src/utils/user-avatar.php';
     <main>
 
       <div class="list-container">
-        <h1>Criar Disciplina</h1>
-        <a href="index.php?action=create-disciplina">+ Nova Disciplina</a>
+        <div class="list-header">
+          <h1>Disciplinas</h1>
+          <a href="index.php?action=create-disciplina">+ Nova Disciplina</a>
+        </div>
 
         <table>
           <thead>

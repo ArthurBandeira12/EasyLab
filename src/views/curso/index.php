@@ -31,8 +31,11 @@ include_once 'src/utils/user-avatar.php';
 
     <main>
       <div class="list-container">
-        <h1>Criar Curso</h1>
-        <a href="index.php?action=create-curso">+ Novo Curso</a>
+        
+        <div class="list-header">
+          <h1>Criar Curso</h1>
+          <a href="index.php?action=create-curso">+ Novo Curso</a>
+        </div>
 
         <table>
           <thead>

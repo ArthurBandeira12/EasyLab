@@ -31,9 +31,11 @@ include_once 'src/utils/user-avatar.php';
 
         <main>
 
-            <div class="tipoespaco-container">
-                <h1>Tipos de Espaço</h1>
-                <a href="index.php?action=create-tipoespaco">Novo Tipo</a>
+            <div class="list-container">
+                <div class="list-header">
+                    <h1>Tipos de Espaço</h1>
+                    <a href="index.php?action=create-tipoespaco">Novo Tipo</a>
+                </div>
 
                 <table>
                     <thead>

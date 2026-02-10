@@ -32,8 +32,8 @@ include_once 'src/utils/user-avatar.php';
         <main>
             <div class="list-container">
                 <div class="list-header">
-                    <h1>Lista de Eventos</h1>
-                    <a href="index.php?action=create-evento">Novo Evento</a>
+                    <h1>Eventos</h1>
+                    <a href="index.php?action=create-evento">+ Novo Evento</a>
                 </div>
 
                 <table>

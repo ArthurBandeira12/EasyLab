@@ -33,7 +33,7 @@ include_once 'src/utils/user-avatar.php';
             <div class="list-container">
                 <div class="list-header">
                     <h1>Espaços</h1>
-                    <a href="index.php?action=create-espaco"> Novo Espaço</a>
+                    <a href="index.php?action=create-espaco">+ Novo Espaço</a>
                 </div>
 
                 <table>
