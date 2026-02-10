@@ -40,14 +40,14 @@
           <button class="pergunta" onclick="abrirModal('navegarCalendario')">Como navegar no calendário?</button>
           <button class="pergunta" onclick="abrirModal('navegarDisponibilidade')">Como visualizar a disponibilidade dos
             espaços?</button><br>
-
+        <?php if (isAdmin()): ?>
           <h3>Cadastros</h3>
           <button class="pergunta" onclick="abrirModal('cadEspaco')">Como cadastrar um novo espaço?</button>
           <button class="pergunta" onclick="abrirModal('cadTipoEspaco')">Como cadastrar um tipo de espaço?</button>
           <button class="pergunta" onclick="abrirModal('cadEvento')">Como cadastrar um evento?</button>
           <button class="pergunta" onclick="abrirModal('cadDisciplina')">Como cadastrar uma disciplina?</button>
           <button class="pergunta" onclick="abrirModal('cadCurso')">Como cadastrar um curso?</button><br>
-
+        <?php endif; ?>
           <h3>Configurações</h3>
           <button class="pergunta" onclick="abrirModal('navegarConfiguracoes')">Como acessar e usar as configurações do
             sistema?</button><br>
