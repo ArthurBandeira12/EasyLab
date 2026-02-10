@@ -272,3 +272,11 @@ form select:focus {
 select {
     background: #ffffff;
 }
+
+footer {
+  background-color: transparent;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  color: #444;
+}
