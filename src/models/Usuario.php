@@ -62,12 +62,29 @@ class Usuario
     }
 
     public function delete()
-{
-    $query = "DELETE FROM " . $this->table . " WHERE id = :id";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':id', $this->id);
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $this->id);
 
-    return $stmt->execute();
-}
+        return $stmt->execute();
+    }
+
+    public function read()
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id = :id LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            $this->id = $row['id'];
+            $this->nome = $row['nome'];
+            $this->email = $row['email'];
+            return true;
+        }
+        return false;
+    }
 }
 ?>

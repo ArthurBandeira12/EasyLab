@@ -12,6 +12,7 @@
                     <a href="index.php?action=evento">Eventos</a>
                     <a href="index.php?action=disciplina">Disciplinas</a>
                     <a href="index.php?action=curso">Cursos</a>
+                    <a href="index.php?action=index-geral">Usuários</a>
                 <?php endif; ?>
                 <a href="index.php?action=home">Calendário</a>
                 <a href="index.php?action=disponibilidade">Disponibilidade</a>

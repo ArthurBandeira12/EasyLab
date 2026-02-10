@@ -31,8 +31,6 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
     header('Location: index.php?action=home');
     exit;
 
-    header('Location: index.php?action=home');
-    exit;
 } else {
 
     $rotasAdmin = [
@@ -65,7 +63,10 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'read-tipoespaco',
         'edit-tipoespaco',
         'update-tipoespaco',
-        'delete-tipoespaco'
+        'delete-tipoespaco',
+        'index-geral',
+        'deletar-usuarioadm',
+        'read-usuario'
     ];
 
     if (in_array($action, $rotasAdmin) && !isAdmin()) {
@@ -121,6 +122,9 @@ if (!isset($_SESSION['usuario_id']) && !in_array($action, $rotasPublicas)) {
         'update-tipoespaco' => $tipoEspacoController->update(),
         'delete-tipoespaco' => $tipoEspacoController->delete(),
         'ajuda' => ['view' => './src/views/ajuda/index.php', 'data' => []],
+        'index-geral' => $usuarioController->indexGeral(),
+        'deletar-usuarioadm' => $usuarioController->delete(),
+        'read-usuario' => $usuarioController->readuser((int)($_GET['id'] ?? 0)),
         default             => ['view' => './src/views/auth/login.php', 'data' => []]
     };
 }
