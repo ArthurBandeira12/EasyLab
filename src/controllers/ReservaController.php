@@ -76,7 +76,8 @@ class ReservaController
                 echo "<script>alert('Preencha todos os campos obrigatórios!'); window.history.back();</script>";
                 exit;
             }
-
+            $data_reserva = new DateTime($_POST['data']);
+            $data_hoje = new DateTime('today');
             $espaco_id = $_POST['espaco_id'];
             $inicio_reserva = $_POST['inicio_reserva'];
             $fim_reserva = $_POST['fim_reserva'];
@@ -99,6 +100,11 @@ class ReservaController
                 echo "<script>alert('Data de início deve ser igual à data de fim!'); window.history.back();</script>";
                 exit;
             }
+            elseif ($data_reserva < $data_hoje) {
+                echo "<script>alert('Não é permitido criar reservas para datas passadas!'); window.history.back();</script>";
+                exit;
+            }
+        
 
             $stmt = $this->db->prepare(
                 "SELECT * FROM reserva 
