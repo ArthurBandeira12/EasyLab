@@ -8,60 +8,72 @@ include_once 'src/utils/user-avatar.php';
     <?php include_once './src/components/header.php'; ?>
 
     <div class="content-area">
-        <header class="navbar">
-            <?php if (isset($_SESSION['usuario_id'])): ?>
-                <div class="navbar-title">
-                    <h1>Meu Perfil</h1>
-                </div>
-                <div class="user-container">
-                    <div class="user">
-                        <a href="index.php?action=index-user">
-                            <img src="<?= avatarui($_SESSION['nome'] ?? 'Usuário') ?>"
-                            alt="Avatar"
-                            class="user-avatar">
-                        </a>
-                        <div class="user-info">
-                            <span class="user-name"><?= htmlspecialchars($_SESSION['nome']) ?></span>
-                            <span class="user-email"><?= htmlspecialchars($_SESSION['email']) ?></span>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </header>
+        
+        <?php if (!empty($mensagem)): ?>
+            <p style="color: green; text-align: center; margin-top: 20px;"><?= htmlspecialchars($mensagem) ?></p>
+        <?php endif; ?>
 
-        <main>
-            <?php if (!empty($mensagem)): ?>
-                <p style="color: green;"><?= htmlspecialchars($mensagem) ?></p>
-            <?php endif; ?>
+        <div class="edit-user-card">
+            
+            <div class="card-header">
+                <h2>Configurações de Perfil</h2>
+                <div class="tabs">
+                    <div class="tab active">Meu Perfil</div>
+                    
+            </div>
 
-            <div class="edit-user">
+            <div class="card-body">
+                
                 <?php 
                 $fotoPerfilUrl = !empty($_SESSION['foto_perfil']) 
                     ? './src/assets/userimage/' . htmlspecialchars($_SESSION['foto_perfil'])
                     : avatarui($_SESSION['nome'] ?? 'Usuário');
                 ?>
-                <label for="foto_perfil" style="cursor: pointer;">
-                    <img src="<?= $fotoPerfilUrl ?>" alt="Avatar" id="preview-avatar">
-                </label>
 
+                <div class="left-column">
+                    <div class="avatar-wrapper">
+                        <img src="<?= $fotoPerfilUrl ?>" alt="Avatar" id="preview-avatar">
+                    </div>
+                    
+                    <label for="foto_perfil" class="btn-change-photo">
+                        Alterar Foto
+                    </label>
+                    <p id="arquivo-selecionado" style="color: #00A3FF; font-size: 12px; margin-top: 10px; display: none;">✓ Selecionada</p>
+                </div>
 
-                <form action="index.php?action=index-user" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="foto_perfil" id="foto_perfil" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                <div class="right-column">
+                    <form action="index.php?action=index-user" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="foto_perfil" id="foto_perfil" accept="image/*" onchange="previewImage(event)" style="display: none;">
 
-                    <p id="arquivo-selecionado" style="color: #0b5742; font-weight: bold; display: none;">✓ Foto selecionada</p>
+                        <div class="form-group">
+                            <label>NOME</label>
+                            <input type="text" name="nome" value="<?= htmlspecialchars($_SESSION['nome']) ?>" required>
+                        </div>
 
-                    <label>Nome:</label><br>
-                    <input type="text" name="nome" value="<?= htmlspecialchars($_SESSION['nome']) ?>" required><br><br>
+                        <div class="form-group">
+                            <label>EMAIL</label>
+                            <input type="email" name="email" value="<?= htmlspecialchars($_SESSION['email']) ?>" required>
+                        </div>
 
-                    <label>Email:</label><br>
-                    <input type="email" name="email" value="<?= htmlspecialchars($_SESSION['email']) ?>" required><br><br>
+                        <div class="form-group">
+                            <label>SENHA</label>
+                            <input type="password" name="senha" placeholder="••••••••••">
+                        </div>
+                        
+                      
 
-                    <label>Nova senha</label><br>
-                    <input type="password" name="senha"><br><br>
+                        <button type="submit" class="btn-save">SALVAR</button>
+                    </form>
 
-                    <button type="submit">Salvar alterações</button>
-                </form>
-
+                    <div style="clear: both; padding-top: 20px;">
+                        <form action="index.php?action=deletar-usuario" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível.');">
+                            <button type="submit" class="btn-delete">Excluir Conta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
                 <script>
                 function previewImage(event) {
                     const file = event.target.files[0];
@@ -86,11 +98,7 @@ include_once 'src/utils/user-avatar.php';
                 </script>
 
 
-                <form action="index.php?action=deletar-usuario" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível.');">
-                    <div class="btn-user-delete">
-                        <button type="submit">Excluir Conta</button>
-                    </div>
-                </form>
+    
             </div>
         </main>
     </div>
